@@ -1,0 +1,52 @@
+{
+  "title": "London.js @ Company Name",
+  "date": "YYYY-MM-DD",
+  "startTime": "HH:MM",
+  "endTime": "HH:MM",
+  "location": {
+    "venue": "Venue Name",
+    "address": "Full Address",
+    "mapLink": "Google Maps URL (optional)"
+  },
+  "meetupUrl": "Meetup.com event URL",
+  "description": {
+    "markdown": "Brief description of the event. Can include markdown formatting.\n\nUse \\n for new lines."
+  },
+  "talks": [
+    {
+      "speaker": {
+        "name": "Speaker Name",
+        "role": "Role, Company (optional)"
+      },
+      "title": "Talk Title"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Sponsor Name",
+      "logo": "/sponsors/logo-filename.png",
+      "url": "Sponsor website URL"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "Organizer Name",
+      "role": "Role, Company",
+      "linkedin": "LinkedIn Profile URL",
+      "website": "Personal/Company Website URL (optional)"
+    }
+  ],
+  "refreshments": {
+    "description": "Description of refreshments provided",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "List item 1",
+      "List item 2",
+      "etc..."
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "URL to code of conduct"
+}

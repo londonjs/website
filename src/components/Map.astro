@@ -7,7 +7,7 @@ interface Props {
 const { location, class: className = "" } = Astro.props;
 
 const encodedLocation = encodeURIComponent(location);
-const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodedLocation}`;
+const mapUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyChnsFQpUbqk6lFv11umTxkcoU4Xszrs_g&q=${encodedLocation}`;
 ---
 
 <div
