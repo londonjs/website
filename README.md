@@ -1,48 +1,130 @@
-# Astro Starter Kit: Basics
+# London.js Community Website
 
-```sh
-npm create astro@latest -- --template basics
+Hopefully the official website for the London.js Community. We host regular meetups featuring talks, networking, and discussions about all things JavaScript.
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/faisalagood/londonjs.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 📖 About
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+London.js is a community-driven meetup group focused on JavaScript and related technologies. This website serves as our digital home, providing information about upcoming and past events.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🛠 Tech Stack
 
-## 🚀 Project Structure
+- [Astro](https://astro.build) - Static Site Generator
+- [Tailwind CSS](https://tailwindcss.com) - Styling
+- Astro Content Collections - JSON files.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📝 Adding a New Meetup
 
-```text
-/
-├── public/
-│   └── favicon.svg
+1. Copy the template from `templates/meetup.json`
+2. Create a new file in `src/content/meetups/` with the format `YYYY-MM-DD.json`
+3. Fill in the event details following the template structure
+4. Add any sponsor logos to the `public/sponsors/` directory
+5. Test locally before committing
+
+You can use this command to create a new meetup:
+```bash
+# From project root
+cp templates/meetup.json src/content/meetups/YYYY-MM-DD.json
+```
+
+### Required Fields:
+- All fields in the template are required except those marked (optional)
+- Dates must be in YYYY-MM-DD format
+- Times must be in 24-hour HH:MM format
+- URLs must be valid and include http(s)://
+
+## 🤝 Contributing
+
+We welcome contributions of all kinds! Here are some ways you can help:
+
+### Code Contributions
+- Bug fixes
+- Feature enhancements
+- Performance improvements
+- Documentation updates
+
+### Content Contributions
+- Adding past events
+- Updating event information
+- Adding speaker details
+- Improving documentation
+
+### Future Development Goals
+- Admin dashboard for easier event management
+- Better integration with Meetup.com API
+- Enhanced speaker profiles
+- Event photo galleries
+- Community showcase section
+
+### Development Process
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 🔧 Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/    # Reusable components
+│   ├── content/       # Content collections
+│   ├── layouts/       # Page layouts
+│   ├── pages/         # Route components
+│   └── utils/         # Utility functions
+├── public/            # Static assets
+└── astro.config.mjs   # Astro configuration
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📄 License
 
-## 🧞 Commands
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-All commands are run from the root of the project, from a terminal:
+## 🤝 Community
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- [Join our Meetup Group](https://www.meetup.com/london-js/)
+- [LinkedIn](https://www.linkedin.com/company/london-js/)
+- [Conference Code of Conduct](http://confcodeofconduct.com)
 
-## 👀 Want to learn more?
+## 🙏 Acknowledgments
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- The organisers that made it happen!
+- The generous sponsors that make it happen!
+- The London.js community that join us!
+
+---
+
+Built with ❤️ by the London.js Community

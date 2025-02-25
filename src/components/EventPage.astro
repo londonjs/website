@@ -2,62 +2,142 @@
 import type { CollectionEntry } from "astro:content";
 import Sponsors from "./Sponsors.astro";
 import Container from "./Container.astro";
+import Map from "./Map.astro";
+import { markdownToHtml } from "../utils/markdown";
 
 interface Props {
   meetup: CollectionEntry<"meetups">;
 }
 
 const { meetup } = Astro.props;
-const { Content } = await meetup.render();
+
+const refreshmentsHtml = meetup.data.refreshments.markdown
+  ? await markdownToHtml(meetup.data.refreshments.description)
+  : meetup.data.refreshments.description;
 ---
 
 <Container>
-  <article class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-4 ">
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold mt-2 text-center sm:text-left">{meetup.data.title}</h1>
-    </header>
-
-    {meetup.data.speakers && (
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">Speakers</h2>
-        <ul class="space-y-4">
-          {meetup.data.speakers.map((speaker) => (
-            <li class="flex items-start">
-              <div>
-                <h3 class="font-medium">{speaker.name}</h3>
-                {speaker.role && (
-                  <p class="text-gray-600">{speaker.role}</p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4">Event Details</h2>
-      <div class="prose prose-sm max-w-none [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mt-6 [&>h2]:mb-2 [&>p]:my-2 [&>ul]:list-disc [&>ul]:ml-4">
-        <Content />
+  <article class="space-y-8">
+    <!-- Event Header -->
+    <div class="flex flex-col gap-6 mb-6 sm:flex-row sm:items-center sm:justify-between bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+      <h1 class="text-3xl font-bold text-center sm:text-left">
+        {meetup.data.title}
+      </h1>
+      
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <time class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 flex-shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          {
+            meetup.data.date.toLocaleDateString("en-GB", {
+              weekday: "long",
+              day: "numeric",
+              month: "long"
+            })
+          }
+        </time>
+        <span class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 flex-shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          {meetup.data.startTime} - {meetup.data.endTime}
+        </span>
       </div>
-    </section>
 
-    {meetup.data.sponsors && (
-      <section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4">Sponsors</h2>
-        <Sponsors sponsors={meetup.data.sponsors} />
-      </section>
-    )}
-
-    <footer class="mt-8 pt-8 border-t border-gray-200">
       <a
         href={meetup.data.meetupUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block px-6 py-3 bg-[#333333] text-white font-bold rounded-xl hover:bg-[#444444] transition-colors"
+        class="inline-block px-8 py-4 bg-[#333333] text-white font-bold rounded-xl hover:bg-[#444444] transition-colors shadow-[4px_4px_0_#666666] hover:shadow-[6px_6px_0_#666666] hover:-translate-y-0.5"
       >
         RSVP on Meetup →
       </a>
-    </footer>
+    </div>
   </article>
+
+  <!-- Main content grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Speakers -->
+    {
+      meetup.data.talks && (
+        <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+          <h2 class="text-2xl font-semibold mb-4">Speakers</h2>
+          <ul class="space-y-6">
+            {meetup.data.talks.map((talk) => (
+              <li class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
+                <h3 class="font-medium text-lg">{talk.speaker.name}</h3>
+                {talk.speaker.role && <p class="text-gray-600 text-sm">{talk.speaker.role}</p>}
+                <p class="mt-2 text-gray-800">{talk.title}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <!-- Location -->
+    <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
+
+    <!-- Sponsors -->
+    {
+      meetup.data.sponsors && (
+        <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+          <h2 class="text-2xl font-semibold mb-4">Sponsors</h2>
+          <Sponsors showSponsoredBy={false} sponsors={meetup.data.sponsors} />
+        </div>
+      )
+    }
+
+    <!-- Refreshments -->
+    <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+      <h2 class="text-2xl font-semibold mb-4">Refreshments</h2>
+      <div class="prose prose-sm" set:html={refreshmentsHtml} />
+    </div>
+
+    <!-- Things to note -->
+    <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+      <h2 class="text-2xl font-semibold mb-4">Things to Note</h2>
+      <ul class="list-disc ml-4 space-y-2">
+        {meetup.data.thingsToNote.items.map((item) => <li class="text-gray-800">{item}</li>)}
+      </ul>
+    </div>
+
+    <!-- Code of Conduct -->
+    <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+      <h2 class="text-2xl font-semibold mb-4">Code of Conduct</h2>
+      <p class="text-gray-800">
+        We are committed to providing a friendly, safe and welcoming environment for all. Please
+        read our
+        <a
+          href={meetup.data.codeOfConductUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#333333] font-bold hover:underline"
+        >
+          Code of Conduct →
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- RSVP Button -->
 </Container>

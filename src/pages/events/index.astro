@@ -5,37 +5,34 @@ import EventCard from "../../components/EventCard.astro";
 import { getCollection } from "astro:content";
 
 const allMeetups = await getCollection("meetups");
-const [upcomingMeetups, pastMeetups] = allMeetups.reduce<
-  [typeof allMeetups, typeof allMeetups]
->(
-  (acc, meetup) => {
-    acc[meetup.data.status === "upcoming" ? 0 : 1].push(meetup);
-    return acc;
-  },
-  [[], []]
-);
-
-upcomingMeetups.sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
-pastMeetups.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const pastMeetups = allMeetups
+  .filter(meetup => meetup.data.status === "past")
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<Layout title="Events | London JavaScript Community">
+<Layout title="Past Events | London.js">
   <Container class="py-8 sm:py-12">
+    <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6 mb-8">
+      <h1 class="text-3xl sm:text-4xl font-black text-center">Past Events</h1>
+      <p class="text-gray-600 text-center mt-4">
+        Looking for our next event? Check out our{" "}
+        <a 
+          href="/" 
+          class="text-[#333333] font-bold hover:underline"
+        >
+          homepage →
+        </a>
+      </p>
+    </div>
 
-    {upcomingMeetups.length > 0 && (
-      <section class="mb-16">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Upcoming Events</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          {upcomingMeetups.map((meetup) => <EventCard meetup={meetup} />)}
-        </div>
-      </section>
-    )}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {pastMeetups.map((meetup) => <EventCard meetup={meetup} />)}
+    </div>
 
-    <section>
-      <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center">Past Events</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-        {pastMeetups.map((meetup) => <EventCard meetup={meetup} />)}
+    {pastMeetups.length === 0 && (
+      <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6 text-center">
+        <p class="text-gray-600">No past events to show yet. Stay tuned for our upcoming events!</p>
       </div>
-    </section>
+    )}
   </Container>
 </Layout>

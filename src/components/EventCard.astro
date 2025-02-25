@@ -12,7 +12,7 @@ const { meetup } = Astro.props;
 <article class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] relative p-8">
   <!-- Header -->
   <div class="mb-6">
-    <p class="text-gray-600 mt-2">{meetup.data.description}</p>
+    <p class="text-gray-600 mt-2">{meetup.data.description.markdown}</p>
   </div>
 
   <!-- Content -->
@@ -46,18 +46,18 @@ const { meetup } = Astro.props;
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
         <circle cx="12" cy="10" r="3"></circle>
       </svg>
-      <span class="text-gray-600">{meetup.data.location}</span>
+      <span class="text-gray-600">{meetup.data.location.venue}, {meetup.data.location.address}</span>
     </div>
 
-    {meetup.data.speakers && (
+    {meetup.data.talks && (
       <div class="space-y-2">
         <h4 class="font-medium">Speakers:</h4>
         <ul class="space-y-1">
-          {meetup.data.speakers.map((speaker) => (
+          {meetup.data.talks.map((talk) => (
             <li class="text-gray-600">
-              {speaker.name}
-              {speaker.role && (
-                <span class="text-gray-500 text-sm"> - {speaker.role}</span>
+              {talk.speaker.name}
+              {talk.speaker.role && (
+                <span class="text-gray-500 text-sm"> - {talk.speaker.role}</span>
               )}
             </li>
           ))}
@@ -74,6 +74,6 @@ const { meetup } = Astro.props;
     >
       View Event Details →
     </a>
-    {meetup.data.sponsors && <Sponsors sponsors={meetup.data.sponsors} />}
+    {meetup.data.sponsors && <Sponsors showSponsoredBy={true} sponsors={meetup.data.sponsors} />}
   </div>
 </article>
