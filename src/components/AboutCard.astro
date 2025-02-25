@@ -1,0 +1,152 @@
+---
+import Container from "./Container.astro";
+
+interface Organizer {
+  name: string;
+  role: string;
+  company: string;
+  twitter?: string;
+  linkedin: string;
+  website?: string;
+  image: string;
+}
+
+const organizers: Organizer[] = [
+  {
+    name: "James McLeod",
+    role: "Open Source Program Lead",
+    company: "NatWest Group",
+    twitter: "https://twitter.com/mcleo_d",
+    linkedin: "https://www.linkedin.com/in/jamesmcleod/",
+    image: "/organisers/james.jpg",
+  },
+  {
+    name: "Jordan Potts",
+    role: "Head of Contract",
+    company: "Albany Growth",
+    linkedin: "https://www.linkedin.com/in/jordan-potts-numi/",
+    image: "/organisers/jordan.jpg",
+  },
+  {
+    name: "Will Laing",
+    role: "Co-Founder",
+    company: "Plan:it",
+    linkedin: "https://www.linkedin.com/in/willhlaing/",
+    website: "https://www.weareplanit.com/",
+    image: "/organisers/will.jpg",
+  },
+];
+---
+
+<section class="py-12 md:py-16">
+  <Container>
+    <div
+      class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-8 md:p-12"
+    >
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <section class="min-w-0 w-full">
+          <h1
+            class="text-[1.8rem] sm:text-[2.3rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.3rem] font-black leading-tight text-center"
+          >
+            What is London.js? 🤔
+          </h1>
+
+          <div class="mt-6 space-y-4 text-gray-900 text-center">
+            <p>
+              Great question! London.js is a vibrant community where JavaScript
+              developers of all levels come together to learn, share, and build
+              with JavaScript.
+            </p>
+            <p>
+              💡 Got questions? Bring them. 💻 Working on something cool? Share
+              it. 🤝 Want to meet fellow devs? This is the place.
+            </p>
+            <p>
+              Our sessions are informal, friendly, and open to everyone, with a
+              flexible agenda that adapts to the group. Whether you're here to
+              pick up new skills, get unstuck, or just chat with like-minded
+              people, you'll find a welcoming space to do it.
+            </p>
+            <p>Come say hi, grab a snack, and let's talk or code! 🚀✨</p>
+          </div>
+          <div class="mt-8 flex gap-4 justify-center">
+            <a
+              href="/events"
+              class="inline-block bg-[#f0db4e] px-6 py-3 font-bold border-2 border-[#333333] rounded-xl shadow-[4px_4px_0_#333333] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[6px_6px_0_#333333] transition-all"
+            >
+              View Events
+            </a>
+            <a
+              href="https://www.meetup.com/london-js"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-white px-6 py-3 font-bold border-2 border-[#333333] rounded-xl shadow-[4px_4px_0_#333333] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[6px_6px_0_#333333] transition-all"
+            >
+              Join Us
+            </a>
+          </div>
+        </section>
+        <section class="min-w-0 w-full">
+          <div class="bg-gray-50 border-2 border-[#333333] rounded-2xl p-6">
+            <h2 class="text-2xl font-bold mb-6 text-center">
+              Meet the Organisers
+            </h2>
+            <div class="space-y-6">
+              {
+                organizers.map((organizer) => (
+                  <div class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
+                    <div class="flex items-start gap-4">
+                      <img
+                        src={organizer.image}
+                        alt={organizer.name}
+                        class="w-16 h-16 rounded-full object-cover border-2 border-[#333333] shrink-0"
+                      />
+                      <div class="min-w-0 flex-1">
+                        <h3 class="font-semibold text-lg truncate">
+                          {organizer.name}
+                          <span class="text-gray-600 text-base font-normal block sm:text-sm md:text-xs text-wrap">
+                            {organizer.role}, {organizer.company}
+                          </span>
+                        </h3>
+                        <div class="mt-2 flex flex-wrap gap-3">
+                          {organizer.twitter && (
+                            <a
+                              href={organizer.twitter}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="text-sm text-grey-600 font-bold hover:underline"
+                            >
+                              Twitter →
+                            </a>
+                          )}
+                          <a
+                            href={organizer.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-sm text-grey-600 font-bold hover:underline"
+                          >
+                            LinkedIn →
+                          </a>
+                          {organizer.website && (
+                            <a
+                              href={organizer.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="text-sm text-grey-600 font-bold hover:underline"
+                            >
+                              Website →
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </Container>
+</section>

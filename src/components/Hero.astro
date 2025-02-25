@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import Countdown from "./Countdown.astro";
+import Map from "./Map.astro";
+import Container from "./Container.astro";
+import EventCard from "./EventCard.astro";
+
+const meetups = await getCollection("meetups");
+const nextMeetup = meetups
+  .filter((meetup) => meetup.data.status === "upcoming")
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
+---
+
+{
+  nextMeetup ? (
+    <Container>
+      <div class="mb-12 text-center sm:text-left">
+        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center justify-center">
+          <h1 class="text-4xl sm:text-5xl font-black">
+            Join us for
+            <span class="text-[#333333]">{nextMeetup.data.title}!</span>
+          </h1>
+          <a
+            href={nextMeetup.data.meetupUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-2 bg-[#333333] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#444444] transition-all duration-200 shadow-[4px_4px_0_#666666] hover:shadow-[6px_6px_0_#666666] hover:-translate-y-0.5"
+          >
+            RSVP NOW →
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="transition-transform duration-200 group-hover:translate-x-1"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <EventCard meetup={nextMeetup} />
+        <Map location={nextMeetup.data.location} />
+      </div>
+
+      <Countdown
+        targetDate={nextMeetup.data.date}
+        targetTime={nextMeetup.data.startTime}
+        endTime={nextMeetup.data.endTime}
+        location={nextMeetup.data.location}
+      />
+    </Container>
+  ) : (
+    <div class="container mx-auto max-w-4xl text-center">
+      <h1 class="text-4xl md:text-6xl font-black mb-4">London.js</h1>
+      <p class="text-xl">No upcoming meetups scheduled yet. Stay tuned!</p>
+    </div>
+  )
+}

@@ -1,0 +1,49 @@
+---
+interface Props {
+  location: string;
+  class?: string;
+}
+
+const { location, class: className = "" } = Astro.props;
+
+const encodedLocation = encodeURIComponent(location);
+const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY}&q=${encodedLocation}`;
+---
+
+<div
+  class={`bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] overflow-hidden h-full ${className}`}
+>
+  <div class="aspect-video relative h-full">
+    <div class="absolute inset-0 bg-gray-100 animate-pulse" id="map-loading">
+    </div>
+    <iframe
+      width="100%"
+      height="100%"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src={mapUrl}
+      class="absolute inset-0 z-10"
+      onload="document.getElementById('map-loading').style.display='none'"
+      onerror="document.getElementById('map-error').style.display='flex'"
+    >
+    </iframe>
+    <div
+      id="map-error"
+      class="absolute inset-0 bg-white hidden items-center justify-center text-gray-600 z-20"
+    >
+      <div class="text-center">
+        <p class="mb-2">Unable to load map</p>
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodedLocation}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[#333333] hover:underline"
+        >
+          View on Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

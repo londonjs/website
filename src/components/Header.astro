@@ -1,0 +1,111 @@
+---
+import Container from "./Container.astro";
+const isActive = (path: string) => Astro.url.pathname === path;
+---
+
+<header class="py-8">
+  <Container class="">
+    <div
+      class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6"
+    >
+      <div class="flex justify-between items-center">
+        <a href="/" class="text-3xl font-black font-arial">London.js</a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex gap-6">
+          <a
+            href="https://www.meetup.com/london-js"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#f0db4e] transition-colors font-bold text-xl"
+          >
+            Join Us
+          </a>
+          <a
+            href="/events"
+            class={`hover:text-[#f0db4e] transition-colors font-bold text-xl ${isActive("/events") ? "underline underline-offset-8" : ""}`}
+          >
+            Events
+          </a>
+          <a
+            href="/about"
+            class={`hover:text-[#f0db4e] transition-colors font-bold text-xl ${isActive("/about") ? "underline underline-offset-8" : ""}`}
+          >
+            About
+          </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="menu-button"
+          class="md:hidden p-2 hover:text-[#f0db4e] transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div
+          id="mobile-menu"
+          class="fixed inset-0 bg-[#f0db4e] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-100"
+        >
+          <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6 m-4">
+            <div class="flex justify-between items-center mb-8">
+              <a href="/" class="text-3xl font-black">London.js</a>
+              <button
+                id="close-menu"
+                class="p-2 hover:text-[#f0db4e] transition-colors"
+                aria-label="Close menu"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <nav class="flex flex-col gap-6">
+              <a
+                href="https://www.meetup.com/london-js"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-[#f0db4e] transition-colors font-bold text-xl"
+              >
+                Join Us
+              </a>
+              <a
+                href="/events"
+                class={`hover:text-[#f0db4e] transition-colors font-bold text-xl ${isActive("/events") ? "underline underline-offset-8" : ""}`}
+              >
+                Events
+              </a>
+              <a
+                href="/about"
+                class={`hover:text-[#f0db4e] transition-colors font-bold text-xl ${isActive("/about") ? "underline underline-offset-8" : ""}`}
+              >
+                About
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const closeButton = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('translate-x-full');
+  });
+
+  closeButton?.addEventListener('click', () => {
+    mobileMenu?.classList.add('translate-x-full');
+  });
+</script>
