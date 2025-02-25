@@ -117,7 +117,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Join our Meetup Group](https://www.meetup.com/london-js/)
 - [LinkedIn](https://www.linkedin.com/company/london-js/)
-- Code of Conduct: We follow the [Conference Code of Conduct](http://confcodeofconduct.com)
+- [Conference Code of Conduct](http://confcodeofconduct.com)
 
 ## 🙏 Acknowledgments
 
