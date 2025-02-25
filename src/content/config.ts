@@ -1,9 +1,10 @@
+// src/content/config.ts
 import { defineCollection, z } from "astro:content";
-import { isBefore } from "date-fns";
-import { toDate } from "date-fns-tz";
+import { isBefore, parse, format } from "date-fns";
 
-const generateSlug = (date: Date, title: string): string => {
-  const formattedDate = date.toISOString().split('T')[0];
+const generateSlug = (dateStr: string, title: string): string => {
+  const date = new Date(dateStr);
+  const formattedDate = format(date, 'yyyy-MM-dd');
   const titleSlug = title
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
@@ -14,59 +15,66 @@ const generateSlug = (date: Date, title: string): string => {
 };
 
 const meetups = defineCollection({
-  type: "content",
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      date: z.date(),
-      startTime: z.string().regex(/^\d{2}:\d{2}$/),
-      endTime: z.string().regex(/^\d{2}:\d{2}$/),
-      description: z.string().optional(),
-      location: z.string(),
-      meetupUrl: z.string().url(),
-      status: z.enum(["upcoming", "past"]).default("upcoming"),
-      slug: z.string().optional(),
-      speakers: z
-        .array(
-          z.object({
-            name: z.string(),
-            role: z.string().optional(),
-          })
-        )
-        .optional(),
-      sponsors: z
-        .array(
-          z.object({
-            name: z.string(),
-            logo: z.string(),
-            url: z.string().url(),
-          })
-        )
-        .optional(),
-    }).transform((data) => {
-      const timeZone = "Europe/London";
-      const startTimeParts = data.startTime.split(":");
-      const endTimeParts = data.endTime.split(":");
-
-      const startDateTimeString = `${data.date.toISOString().split("T")[0]}T${
-        data.startTime
-      }:00`;
-      const endDateTimeString = `${data.date.toISOString().split("T")[0]}T${
-        data.endTime
-      }:00`;
-
-      const startDateTime = toDate(startDateTimeString, { timeZone });
-      const endDateTime = toDate(endDateTimeString, { timeZone });
-      const now = new Date();
-
-      return {
-        ...data,
-        startDateTime,
-        endDateTime,
-        status: isBefore(endDateTime, now) ? "past" : "upcoming",
-        slug: data.slug ?? generateSlug(data.date, data.title),
-      };
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),         // Format: "YYYY-MM-DD"
+    startTime: z.string(),    // Format: "HH:MM"
+    endTime: z.string(),      // Format: "HH:MM"
+    location: z.object({
+      venue: z.string(),
+      address: z.string(),
+      mapLink: z.string().url().optional(),
     }),
+    meetupUrl: z.string().url(),
+    description: z.object({
+      markdown: z.string(),
+    }),
+    slug: z.string().optional(),
+    talks: z.array(
+      z.object({
+        speaker: z.object({
+          name: z.string(),
+          role: z.string().optional(),
+        }),
+        title: z.string(),
+      })
+    ),
+    sponsors: z.array(
+      z.object({
+        name: z.string(),
+        logo: z.string(),
+        url: z.string().url(),
+      })
+    ).optional(),
+    organizers: z.array(
+      z.object({
+        name: z.string(),
+        role: z.string(),
+        linkedin: z.string().url(),
+        website: z.string().url().optional(),
+      })
+    ),
+    refreshments: z.object({
+      description: z.string(),
+      markdown: z.boolean(),
+    }),
+    thingsToNote: z.object({
+      items: z.array(z.string()),
+      markdown: z.boolean(),
+    }),
+    codeOfConductUrl: z.string().url(),
+  }).transform((data) => {
+    const dateObj = new Date(data.date);
+    const eventDate = parse(`${data.date} ${data.endTime}`, 'yyyy-MM-dd HH:mm', new Date());
+
+    return {
+      ...data,
+      date: dateObj,
+      status: isBefore(eventDate, new Date()) ? "past" : "upcoming",
+      slug: data.slug || generateSlug(data.date, data.title)
+    };
+  })
 });
 
 export const collections = { meetups };

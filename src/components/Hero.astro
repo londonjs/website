@@ -48,14 +48,14 @@ const nextMeetup = meetups
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <EventCard meetup={nextMeetup} />
-        <Map location={nextMeetup.data.location} />
+        <Map location={`${nextMeetup.data.location.venue}, ${nextMeetup.data.location.address}`} />
       </div>
 
       <Countdown
         targetDate={nextMeetup.data.date}
         targetTime={nextMeetup.data.startTime}
         endTime={nextMeetup.data.endTime}
-        location={nextMeetup.data.location}
+        location={`${nextMeetup.data.location.venue}, ${nextMeetup.data.location.address}`}
       />
     </Container>
   ) : (

@@ -1,0 +1,87 @@
+{
+  "title": "London.js @ Zoopla",
+  "date": "2025-02-27",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "location": {
+    "venue": "The Cooperage",
+    "address": "5 Copper Row, SE1 2LH",
+    "mapLink": "https://maps.app.goo.gl/5krcREFjciAVWJY6A"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/305877169",
+  "description": {
+    "markdown": "Our second event of 2025 & we're not slowing down! Join London.js for an evening of JavaScript talks, networking, and refreshments!"
+  },
+  "talks": [
+    {
+      "speaker": {
+        "name": "Viktorija Buklajeva",
+        "role": "Software Engineer, Zoopla"
+      },
+      "title": "Pages vs. Apps: Navigating Next.js Routing Paradigms"
+    },
+    {
+      "speaker": {
+        "name": "Praveen Kumar",
+        "role": "Associate Director - UI Core Architecture - Fitch Group"
+      },
+      "title": "Running Behind the RunTimes: Node, Deno, Bun – The JavaScript RunTime Marathon"
+    },
+    {
+      "speaker": {
+        "name": "Igor Luchenkov",
+        "role": "Staff Software Engineer at getclarify.ai"
+      },
+      "title": "Help! My Startup Ate My Tests"
+    },
+
+    {
+      "speaker": {
+        "name": "Hodan Ahmed",
+        "role": "Software Engineer, Zoopla"
+      },
+      "title": "Building confidence as a software engineer"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Zoopla",
+      "logo": "/sponsors/zoopla.png",
+      "url": "https://www.zoopla.co.uk/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Program Lead, NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Contract, Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/",
+      "website": "https://weareplanit.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}

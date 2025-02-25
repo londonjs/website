@@ -5,13 +5,14 @@ interface Props {
     logo: string;
     url: string;
   }[];
+  showSponsoredBy: boolean;
 }
 
-const { sponsors } = Astro.props;
+const { sponsors, showSponsoredBy = false } = Astro.props;
 ---
 
 <div class="mt-6">
-  <h4 class="text-sm text-gray-600 font-medium">Sponsored by:</h4>
+  { showSponsoredBy && <h4 class="text-sm text-gray-600 font-medium">Sponsored by:</h4> }
   <div class="mt-3 flex flex-wrap gap-3 items-center">
     {
       sponsors.map((sponsor) => (
