@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Countdown from "./Countdown.astro";
+import ReactCountdown from "./Countdown.jsx"
 import Map from "./Map.astro";
 import Container from "./Container.astro";
 import EventCard from "./EventCard.astro";
@@ -51,7 +51,8 @@ const nextMeetup = meetups
         <Map location={`${nextMeetup.data.location.venue}, ${nextMeetup.data.location.address}`} />
       </div>
 
-      <Countdown
+      <ReactCountdown
+        client:load
         targetDate={nextMeetup.data.date}
         targetTime={nextMeetup.data.startTime}
         endTime={nextMeetup.data.endTime}

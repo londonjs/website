@@ -31,7 +31,7 @@ London.js is a community-driven meetup group focused on JavaScript and related t
 ## 📝 Adding a New Meetup
 
 1. Copy the template from `templates/meetup.json`
-2. Create a new file in `src/content/meetups/` with the format `YYYY-MM-DD.json`
+2. Create a new file in `src/content/meetups/` with the format `meetup-month-year.json`
 3. Fill in the event details following the template structure
 4. Add any sponsor logos to the `public/sponsors/` directory
 5. Test locally before committing
@@ -39,7 +39,7 @@ London.js is a community-driven meetup group focused on JavaScript and related t
 You can use this command to create a new meetup:
 ```bash
 # From project root
-cp templates/meetup.json src/content/meetups/YYYY-MM-DD.json
+cp templates/meetup.json src/content/meetups/meetup-month-year.json
 ```
 
 ### Required Fields:
