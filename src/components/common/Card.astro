@@ -1,0 +1,25 @@
+---
+interface Props {
+  variant?: 'default' | 'primary';
+  padding?: string;
+  shadow?: string;
+  border?: string;
+  rounded?: string;
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  padding = 'p-8 md:p-12',
+  shadow = 'shadow-[4px_4px_0_#333333]',
+  border = 'border-4 border-[#333333]',
+  rounded = 'rounded-3xl',
+  class: className,
+} = Astro.props;
+
+const variantClass = variant === 'primary' ? 'border-[#f0db4e]' : '';
+---
+
+<div class={`bg-white ${border} ${rounded} ${shadow} ${padding} ${variantClass} ${className || ''}`}>
+  <slot />
+</div>

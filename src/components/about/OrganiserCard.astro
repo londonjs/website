@@ -1,0 +1,63 @@
+---
+interface Props {
+  organizer: {
+    name: string;
+    role: string;
+    company: string;
+    twitter?: string;
+    linkedin: string;
+    website?: string;
+    image: string;
+  }
+}
+
+const { organizer } = Astro.props;
+---
+
+<div class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
+  <div class="flex items-start gap-4">
+    <img
+      src={organizer.image}
+      alt={organizer.name}
+      class="w-16 h-16 rounded-full object-cover border-2 border-[#333333] shrink-0"
+    />
+    <div class="min-w-0 flex-1">
+      <h3 class="font-semibold text-lg truncate">
+        {organizer.name}
+        <span class="text-gray-600 text-base font-normal block sm:text-sm md:text-xs text-wrap">
+          {organizer.role}, {organizer.company}
+        </span>
+      </h3>
+      <div class="mt-2 flex flex-wrap gap-3">
+        {organizer.twitter && (
+          <a
+            href={organizer.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-grey-600 font-bold hover:underline"
+          >
+            Twitter →
+          </a>
+        )}
+        <a
+          href={organizer.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-grey-600 font-bold hover:underline"
+        >
+          LinkedIn →
+        </a>
+        {organizer.website && (
+          <a
+            href={organizer.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-grey-600 font-bold hover:underline"
+          >
+            Website →
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

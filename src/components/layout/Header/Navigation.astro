@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<nav class={`flex gap-6 ${className}`}>
+  <a 
+    href="https://www.meetup.com/london-js" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="hover:text-[#f0db4e] transition-colors font-bold text-xl"
+  >
+    Join Us
+  </a>
+  <a 
+    href="/events" 
+    class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
+  >
+    Events
+  </a>
+  <a 
+    href="/about" 
+    class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
+  >
+    About
+  </a>
+</nav>

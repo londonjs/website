@@ -70,10 +70,14 @@ const meetups = defineCollection({
     return {
       ...data,
       date: dateObj,
-      status: isBefore(eventDate, new Date()) ? "past" : "upcoming",
+      status: (() => {
+        const isPast = isBefore(eventDate, new Date());
+        return isPast ? "past" : "upcoming";
+      })(),
       slug: data.slug || generateSlug(data.date, data.title)
     };
   })
 });
 
 export const collections = { meetups };
+

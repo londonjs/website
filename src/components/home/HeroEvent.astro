@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Card from "../common/Card.astro";
+import Button from "../common/Button.astro";
+import EventCard from "../events/EventCard.astro";
+import Map from "../maps/Map.astro";
+import ReactCountdown from "../events/Countdown.jsx";
+import Arrow from "../icons/Arrow.astro";
+
+interface Props {
+  meetup: CollectionEntry<"meetups">;
+}
+
+const { meetup } = Astro.props;
+---
+
+<>
+  <Card class="mb-8">
+    <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center justify-center">
+      <h1 class="text-4xl sm:text-5xl font-black text-center sm:text-left">
+        Join us for
+        <span class="text-[#333333]">{meetup.data.title}!</span>
+      </h1>
+      <Button 
+        href={meetup.data.meetupUrl}
+        external
+        class="group whitespace-nowrap"
+      >
+        RSVP NOW
+        <Arrow class="transition-transform duration-200 group-hover:translate-x-1" />
+      </Button>
+    </div>
+  </Card>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <EventCard meetup={meetup} />
+    <Map
+      location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
+    />
+  </div>
+
+  <ReactCountdown
+    client:load
+    targetDate={meetup.data.date}
+    targetTime={meetup.data.startTime}
+    endTime={meetup.data.endTime}
+    location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
+  />
+</>

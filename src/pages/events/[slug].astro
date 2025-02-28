@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import EventPage from '../../components/EventPage.astro';
+import Base from "../../layouts/Base.astro";
+import EventDetails from '../../components/events/EventDetails.astro';
 
 export async function getStaticPaths() {
   const meetups = await getCollection('meetups');
@@ -14,8 +14,6 @@ export async function getStaticPaths() {
 const { meetup } = Astro.props;
 ---
 
-<Layout title={`${meetup.data.title} | London.js`}>
-  <div class="container mx-auto">
-    <EventPage meetup={meetup} />
-  </div>
-</Layout>
+<Base title={`${meetup.data.title} | London.js`}>
+  <EventDetails meetup={meetup} />
+</Base>

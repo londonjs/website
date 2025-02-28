@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Sponsors from "./Sponsors.astro";
+import Sponsors from "../sponsors/Sponsors.astro";
+import Calendar from "../icons/Calendar.astro";
+import Clock from "../icons/Clock.astro";
+import Location from "../icons/Location.astro";
 
 interface Props {
   meetup: CollectionEntry<"meetups">;
@@ -10,20 +13,13 @@ const { meetup } = Astro.props;
 ---
 
 <article class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] relative p-8">
-  <!-- Header -->
   <div class="mb-6">
     <p class="text-gray-600 mt-2">{meetup.data.description.markdown}</p>
   </div>
 
-  <!-- Content -->
   <div class="space-y-4">
     <div class="flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-        <line x1="16" y1="2" x2="16" y2="6"></line>
-        <line x1="8" y1="2" x2="8" y2="6"></line>
-        <line x1="3" y1="10" x2="21" y2="10"></line>
-      </svg>
+      <Calendar />
       <time class="text-gray-600">
         {meetup.data.date.toLocaleDateString("en-GB", {
           weekday: "long",
@@ -34,18 +30,12 @@ const { meetup } = Astro.props;
     </div>
 
     <div class="flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
+      <Clock />
       <span class="text-gray-600">{meetup.data.startTime} - {meetup.data.endTime}</span>
     </div>
 
     <div class="flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3"></circle>
-      </svg>
+      <Location />
       <span class="text-gray-600">{meetup.data.location.venue}, {meetup.data.location.address}</span>
     </div>
 
@@ -66,7 +56,6 @@ const { meetup } = Astro.props;
     )}
   </div>
 
-  <!-- Footer -->
   <div class="mt-6">
     <a
       href={`/events/${meetup.data.slug}`}
