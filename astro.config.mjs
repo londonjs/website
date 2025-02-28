@@ -4,8 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  site: 'https://londonjs.github.io',
-  base: '/',
+  site: "https://london.js.org",
   vite: {
     plugins: [tailwindcss()]
   },
