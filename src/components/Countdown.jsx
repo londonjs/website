@@ -7,20 +7,19 @@ const Countdown = ({ targetDate, targetTime, endTime, location }) => {
     minutes: '00',
     seconds: '00'
   });
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     function calculateTimeLeft() {
-
       const [eventHours, eventMinutes] = endTime.split(':');
       const endDateTime = new Date(targetDate);
-
       endDateTime.setHours(parseInt(eventHours), parseInt(eventMinutes), 0, 0);
       
       const now = new Date();
       const diff = endDateTime.getTime() - now.getTime();
       
       if (diff <= 0) {
-        window.location.reload();
+        setIsExpired(true);
         return;
       }
       
@@ -37,12 +36,22 @@ const Countdown = ({ targetDate, targetTime, endTime, location }) => {
       });
     }
     
-    calculateTimeLeft();
-    
-    const timer = setInterval(calculateTimeLeft, 1000);
-    
-    return () => clearInterval(timer);
-  }, [targetDate, endTime]);
+    if (!isExpired) {
+      calculateTimeLeft();
+      const timer = setInterval(calculateTimeLeft, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [targetDate, endTime, isExpired]);
+
+  if (isExpired) {
+    return (
+      <div className="bg-white border-4 border-[#333333] rounded-3xl shadow-[8px_8px_0_#333333] p-4">
+        <div className="text-center">
+          <p className="text-2xl font-bold">Event has ended</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white border-4 border-[#333333] rounded-3xl shadow-[8px_8px_0_#333333] p-4">
