@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Container from "../common/Container.astro";
+import HeroEvent from "./HeroEvent.astro";
+import HeroEnded from "./HeroEnded.astro";
+import HeroEmpty from "./HeroEmpty.astro";
+
+const meetups = await getCollection("meetups");
+const nextMeetup = meetups
+  .filter((meetup) => meetup.data.status === "upcoming")
+  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())[0];
+
+const isEventEnded = nextMeetup ? new Date() > new Date(`${nextMeetup.data.date.toISOString().split('T')[0]}T${nextMeetup.data.endTime}`) : true;
+---
+
+<Container>
+  {
+    nextMeetup ? (
+      isEventEnded ? (
+        <HeroEnded />
+      ) : (
+        <HeroEvent meetup={nextMeetup} />
+      )
+    ) : (
+      <HeroEmpty />
+    )
+  }
+</Container>

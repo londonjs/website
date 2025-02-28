@@ -1,0 +1,103 @@
+---
+import Container from "../common/Container.astro";
+import Card from "../common/Card.astro";
+import Button from "../common/Button.astro";
+import OrganizerCard from "./OrganiserCard.astro";
+
+const organizers = [
+  {
+    name: "James McLeod",
+    role: "Open Source Program Lead",
+    company: "NatWest Group",
+    linkedin: "https://www.linkedin.com/in/jamesmcleod/",
+    image: "/organisers/james.jpg",
+  },
+  {
+    name: "Jordan Potts",
+    role: "Head of Contract",
+    company: "Albany Growth",
+    linkedin: "https://www.linkedin.com/in/jordan-potts-numi/",
+    image: "/organisers/jordan.jpg",
+  },
+  {
+    name: "Will Laing",
+    role: "Co-Founder",
+    company: "Plan:it",
+    linkedin: "https://www.linkedin.com/in/willhlaing/",
+    image: "/organisers/will.jpg",
+  },
+];
+---
+
+<section class="py-12 md:py-16">
+  <Container>
+    <Card
+      border="border-4 border-[#333333]"
+      rounded="rounded-3xl"
+      shadow="shadow-[4px_4px_0_#333333]"
+      padding="p-8 md:p-12"
+    >
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <section class="min-w-0 w-full">
+          <h1
+            class="text-[1.8rem] sm:text-[2.3rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.3rem] font-black leading-tight text-center"
+          >
+            What is London.js? 🤔
+          </h1>
+
+          <div class="mt-6 space-y-4 text-gray-900 text-center">
+            <p>
+              Great question! London.js is a vibrant community where JavaScript
+              developers of all levels come together to learn, share, and build
+              with JavaScript.
+            </p>
+            <p>
+              💡 Got questions? Bring them. 💻 Working on something cool? Share
+              it. 🤝 Want to meet fellow devs? This is the place.
+            </p>
+            <p>
+              Our sessions are informal, friendly, and open to everyone, with a
+              flexible agenda that adapts to the group. Whether you're here to
+              pick up new skills, get unstuck, or just chat with like-minded
+              people, you'll find a welcoming space to do it.
+            </p>
+            <p>Come say hi, grab a snack, and let's talk or code! 🚀✨</p>
+          </div>
+          <div class="mt-8 flex gap-4 justify-center">
+            <Button 
+              href="/events"
+              variant="primary"
+            >
+              View Events
+            </Button>
+            <Button 
+              variant="secondary" 
+              href="https://www.meetup.com/london-js"
+              external
+            >
+              Join Us
+            </Button>
+          </div>
+        </section>
+        <section class="min-w-0 w-full">
+          <Card 
+            padding="p-6" 
+            border="border-2 border-[#333333]" 
+            rounded="rounded-2xl"
+            shadow="shadow-none"
+            class="bg-gray-50"
+          >
+            <h2 class="text-2xl font-bold mb-6 text-center">
+              Meet the Organisers
+            </h2>
+            <div class="space-y-6">
+              {organizers.map((organizer) => (
+                <OrganizerCard organizer={organizer} />
+              ))}
+            </div>
+          </Card>
+        </section>
+      </div>
+    </Card>
+  </Container>
+</section>

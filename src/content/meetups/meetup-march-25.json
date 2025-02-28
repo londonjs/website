@@ -1,0 +1,65 @@
+{
+  "title": "London.js @ Attio",
+  "date": "2025-03-27",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "location": {
+    "venue": "Attio",
+    "address": "3-11 Pine St, London EC1R 0JH",
+    "mapLink": "https://maps.app.goo.gl/NHZGDuhLnqiehak3A"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/306424233",
+  "description": {
+    "markdown": "Our third event of 2025 & we're not slowing down! Join London.js for an evening of JavaScript talks, networking, and refreshments!"
+  },
+  "talks": [
+    {
+      "speaker": {
+        "name": "TBA",
+        "role": "TBA"
+      },
+      "title": "TBA"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Attio",
+      "logo": "/sponsors/attio.png",
+      "url": "https://attio.com/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Program Lead, NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Contract, Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/",
+      "website": "https://weareplanit.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}

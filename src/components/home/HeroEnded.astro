@@ -1,0 +1,25 @@
+---
+import Card from "../common/Card.astro";
+import Button from "../common/Button.astro";
+---
+
+<Card class="mb-8">
+  <div class="text-center">
+    <h1 class="text-4xl sm:text-5xl font-black mb-6">
+      Today's event has ended
+    </h1>
+    <p class="text-xl mb-8">Thank you for joining us! Stay tuned for our next event.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <Button href="/events">
+        View Past Events
+      </Button>
+      <Button 
+        variant="secondary" 
+        href="https://www.meetup.com/london-js"
+        external
+      >
+        Join Our Meetup Group
+      </Button>
+    </div>
+  </div>
+</Card>

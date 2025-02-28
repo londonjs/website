@@ -43,9 +43,11 @@ const Countdown = ({ targetDate, targetTime, endTime, location }) => {
     }
   }, [targetDate, endTime, isExpired]);
 
+  const cardStyle = "bg-white border-4 border-[#333333] rounded-3xl shadow-[8px_8px_0_#333333] p-4";
+
   if (isExpired) {
     return (
-      <div className="bg-white border-4 border-[#333333] rounded-3xl shadow-[8px_8px_0_#333333] p-4">
+      <div className={cardStyle}>
         <div className="text-center">
           <p className="text-2xl font-bold">Event has ended</p>
         </div>
@@ -54,7 +56,7 @@ const Countdown = ({ targetDate, targetTime, endTime, location }) => {
   }
 
   return (
-    <div className="bg-white border-4 border-[#333333] rounded-3xl shadow-[8px_8px_0_#333333] p-4">
+    <div className={cardStyle}>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-center">
         <div className="countdown-item">
           <span className="block text-3xl sm:text-4xl md:text-6xl font-black">
