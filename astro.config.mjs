@@ -3,14 +3,10 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 
-
 export default defineConfig({
+  site: 'https://londonjs.github.io',
   vite: {
-    plugins: [tailwindcss()],
-    server: {
-      allowedHosts: ["vite.fais.al"]
-    }
+    plugins: [tailwindcss()]
   },
-
   integrations: [react()]
 });
