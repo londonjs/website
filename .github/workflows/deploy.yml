@@ -16,13 +16,18 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+
+      - name: Ensure CNAME file exists
+        run: echo "london.js.org" > dist/CNAME
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # Updated to v3
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages-${{ github.run_id }}  # Unique artifact name
-          path: dist  # Ensure this matches Astro's build output directory
+          name: github-pages-${{ github.run_id }}
+          path: dist
 
   deploy:
     needs: build
