@@ -5,6 +5,7 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: 'https://londonjs.github.io',
+  base: '/',
   vite: {
     plugins: [tailwindcss()]
   },
