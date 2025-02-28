@@ -66,7 +66,6 @@ We welcome contributions of all kinds! Here are some ways you can help:
 
 ### Future Development Goals
 - Admin dashboard for easier event management
-- Better integration with Meetup.com API
 - Enhanced speaker profiles
 - Event photo galleries
 - Community showcase section
@@ -85,9 +84,6 @@ npm install
 
 # Start development server
 npm run dev
-
-# Run tests
-npm test
 
 # Build for production
 npm run build
