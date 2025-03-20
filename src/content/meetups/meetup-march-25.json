@@ -5,7 +5,7 @@
   "endTime": "21:00",
   "location": {
     "venue": "Attio",
-    "address": "3-11 Pine St, London EC1R 0JH",
+    "address": "Exmouth House, 3-11 Pine St, London EC1R 0JH",
     "mapLink": "https://maps.app.goo.gl/NHZGDuhLnqiehak3A"
   },
   "meetupUrl": "https://www.meetup.com/london-js/events/306424233",
@@ -15,10 +15,18 @@
   "talks": [
     {
       "speaker": {
-        "name": "TBA",
-        "role": "TBA"
+        "name": "Erik Rasmussen",
+        "role": "Principal Product Engineer, Attio"
       },
-      "title": "TBA"
+      "title": "React Beyond the DOM"
+    },
+
+    {
+      "speaker": {
+        "name": "Nick Humberstone",
+        "role": "Junior Software Engineer, Actioncy"
+      },
+      "title": "Breaking into tech in 2025"
     }
   ],
   "sponsors": [
