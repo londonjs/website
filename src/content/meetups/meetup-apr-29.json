@@ -1,0 +1,64 @@
+{
+  "title": "London.js @ Checkatrade",
+  "date": "2025-04-29",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "location": {
+    "venue": "Focus Point",
+    "address": "21 Caledonian Road, London, N1 9GB",
+    "mapLink": "https://maps.app.goo.gl/kjALja9faQ4T3Wo28"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/307041330",
+  "description": {
+    "markdown": "Kicking off our Q2 events for 2025! Join London.js for an evening of JavaScript talks, networking, and refreshments!"
+  },
+  "talks": [
+    {
+      "speaker": {
+        "name": "(Speakers To Be Announced Soon)"
+      },
+      "title": "(Topic To Be Announced Soon)"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Checkatrade",
+      "logo": "/sponsors/checkatrade.png",
+      "url": "https://www.checkatrade.com/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Program Lead, NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Contract, Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/",
+      "website": "https://weareplanit.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
