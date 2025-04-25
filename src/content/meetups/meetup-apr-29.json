@@ -15,9 +15,17 @@
   "talks": [
     {
       "speaker": {
-        "name": "(Speakers To Be Announced Soon)"
+        "name": "Sam Larsen-Disney",
+        "role": "Founder @ HackathonParty & Senior Design Engineer @ Clarify"
       },
-      "title": "(Topic To Be Announced Soon)"
+      "title": "From Chaos to Clicks: What HackathonParty taught us about productionising a side project"
+    },
+    {
+      "speaker": {
+        "name": "Shane Osbourne",
+        "role": "Senior Software Engineer at DuckDuckGo "
+      },
+      "title": "3 steps towards faster deployments"
     }
   ],
   "sponsors": [
