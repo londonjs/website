@@ -4,12 +4,11 @@ import * as fs from 'node:fs/promises';
 import path from 'node:path';
 
 // Mock fs.readFile and fs.writeFile
-vi.mock('node:fs/promises', async () => {
-  return {
-    readFile: vi.fn(),
-    writeFile: vi.fn(),
-    mkdir: vi.fn().mockResolvedValue(undefined)
-  };
+vi.mock('node:fs/promises', () => {
+  const readFile = vi.fn();
+  const writeFile = vi.fn();
+  const mkdir = vi.fn().mockResolvedValue(undefined);
+  return { readFile, writeFile, mkdir };
 });
 
 // Setup for cache mocks
