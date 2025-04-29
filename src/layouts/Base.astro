@@ -6,11 +6,13 @@ import Footer from '../components/layout/Footer/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  members?: number;
 }
 
 const { 
   title,
-  description = "London.js Community - A vibrant community where JavaScript developers of all levels come together to learn, share, and build with JavaScript."
+  description = "London.js Community - A vibrant community where JavaScript developers of all levels come together to learn, share, and build with JavaScript.",
+  members
 } = Astro.props;
 ---
 
@@ -40,7 +42,7 @@ const {
     <title>{title}</title>
   </head>
   <body class="font-poppins text-[#333333] bg-[#f0db4e] leading-relaxed min-h-screen flex flex-col">
-    <Header />
+    <Header members={members} />
     <main class="flex-grow">
       <slot />
     </main>
