@@ -26,6 +26,13 @@
         "role": "Senior Software Engineer at DuckDuckGo "
       },
       "title": "3 steps towards faster deployments"
+    },
+    {
+      "speaker": {
+        "name": "Craig Bates & Alex Kharlanovskyi",
+        "role": "Engineering at Checkatrade"
+      },
+      "title": "Search Unchained: How Checkatrade Replaced Elasticsearch with a Custom, AI-Ready Stack"
     }
   ],
   "sponsors": [
