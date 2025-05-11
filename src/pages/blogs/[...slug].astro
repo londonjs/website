@@ -1,0 +1,47 @@
+---
+import { getEntry, render } from "astro:content";
+import { formatDate } from "@/utils";
+
+import Container from "@/components/common/Container.astro";
+import Base from "@/layouts/Base.astro";
+import Button from "@/components/common/Button.astro";
+import Tags from "@/components/blog/Tag.astro";
+import Card from "@/components/common/Card.astro";
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+	throw new Error("Slug is required");
+}
+
+const entry = await getEntry("blog", slug);
+
+if (entry === undefined) {
+	return Astro.redirect("/404");
+}
+
+const { Content } = await render(entry);
+console.log(Content);
+---
+
+<Base title={slug}>
+	<Container>
+		<Card>
+			<Button href="/blogs" variant="secondary">&#8592; Back </Button>
+			<h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
+			<h3 class="text-md mb-2">
+				Written by {entry.data.author} on {formatDate(entry.data.pubDate)}
+			</h3>
+			<Tags tags={entry.data.tags} />
+			<figure>
+				<img
+					src={`/blogs/${entry.data.image}`}
+					alt="Article Image"
+					class="aspect-16/9 object-cover bg-gray-200 rounded-xl my-6"
+				/>
+			</figure>
+
+			<Content />
+		</Card>
+	</Container>
+</Base>
