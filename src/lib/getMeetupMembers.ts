@@ -1,5 +1,5 @@
 import { parse } from 'node-html-parser';
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 import path from 'node:path';
 
 // Cache file path

@@ -1,18 +1,16 @@
 import { describe, test, expect, vi, beforeEach, afterEach } from 'vitest';
 import path from 'node:path';
+import * as fs from 'node:fs/promises';
 
 // Mock fs module before importing any files that use it
 vi.mock('node:fs/promises', () => ({
-  default: {
-    readFile: vi.fn(),
-    writeFile: vi.fn(),
-    mkdir: vi.fn()
-  }
+  readFile: vi.fn(),
+  writeFile: vi.fn(),
+  mkdir: vi.fn()
 }));
 
 // Import the module after mocking
 import { getMeetupMembers } from './getMeetupMembers';
-import fs from 'node:fs/promises';
 
 // Constants for cache testing
 const CACHE_DIR = '.cache';

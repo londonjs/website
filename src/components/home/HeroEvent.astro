@@ -18,14 +18,10 @@ const { meetup } = Astro.props;
   <Card class="mb-8">
     <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center justify-center">
       <h1 class="text-4xl sm:text-5xl font-black text-center sm:text-left">
-        Join us for
+        Join
         <span class="text-[#333333]">{meetup.data.title}!</span>
       </h1>
-      <Button 
-        href={meetup.data.meetupUrl}
-        external
-        class="group whitespace-nowrap"
-      >
+      <Button href={meetup.data.meetupUrl} external class="group whitespace-nowrap">
         RSVP NOW
         <Arrow class="transition-transform duration-200 group-hover:translate-x-1" />
       </Button>
@@ -34,9 +30,7 @@ const { meetup } = Astro.props;
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
     <EventCard meetup={meetup} />
-    <Map
-      location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
-    />
+    <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
   </div>
 
   <ReactCountdown
