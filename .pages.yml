@@ -1,0 +1,213 @@
+# .pages.yml
+
+media:
+  input: public
+  output: /
+
+content:
+  - name: meetups
+    label: Meetups
+    type: collection
+    path: src/content/meetups
+    format: json
+    # Use the 'slug' field to determine the filename.
+    # The user will need to enter the desired filename base (e.g., "meetup-may-25")
+    # into the "Slug" field in the CMS form.
+    filename: '{{fields.slug}}.json'
+    view:
+      primary: title
+      fields: [title, date, location.venue]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: date
+        label: Date
+        type: date
+        options:
+          format: 'yyyy-MM-dd'
+          time: false
+        required: true
+
+      - name: startTime
+        label: Start Time (HH:MM)
+        type: string
+        required: true
+        pattern:
+          regex: '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'
+          message: 'Please use HH:MM format (e.g., 18:00).'
+
+      - name: endTime
+        label: End Time (HH:MM)
+        type: string
+        required: true
+        pattern:
+          regex: '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'
+          message: 'Please use HH:MM format (e.g., 21:00).'
+
+      - name: location
+        label: Location
+        type: object
+        required: true
+        fields:
+          - name: venue
+            label: Venue Name
+            type: string
+            required: true
+          - name: address
+            label: Full Address
+            type: text
+            required: true
+          - name: mapLink
+            label: Google Maps Link (Optional)
+            type: string
+            required: false
+            pattern:
+              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              message: 'Must be a valid URL.'
+
+      - name: meetupUrl
+        label: Meetup.com URL (or similar)
+        type: string
+        required: true
+        pattern:
+          regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+          message: 'Must be a valid URL.'
+
+      - name: description
+        label: Event Description
+        type: object
+        required: true
+        fields:
+          - name: markdown
+            label: Content
+            type: rich-text
+            required: true
+
+      - name: slug # This field will now determine the filename
+        label: Filename Slug (e.g., meetup-may-25)
+        type: string
+        required: true # Make it required in CMS to ensure filename is set
+        description: "Enter the desired base for the JSON filename (e.g., 'meetup-may-25'). This will be used to create the file (e.g., 'meetup-may-25.json') and will also be the slug used by Astro."
+
+      - name: talks
+        label: Talks
+        type: object
+        list: true
+        required: true
+        fields:
+          - name: speaker
+            label: Speaker Details
+            type: object
+            required: true
+            fields:
+              - name: name
+                label: Speaker Name
+                type: string
+                required: true
+              - name: role
+                label: Speaker Role (Optional)
+                type: string
+                required: false
+          - name: title
+            label: Talk Title
+            type: string
+            required: true
+
+      - name: sponsors
+        label: Sponsors (Optional)
+        type: object
+        list: true
+        required: false
+        fields:
+          - name: name
+            label: Sponsor Name
+            type: string
+            required: true
+          - name: logo
+            label: Sponsor Logo
+            type: image
+            options:
+              path: sponsors
+            required: true
+          - name: url
+            label: Sponsor Website URL
+            type: string
+            required: true
+            pattern:
+              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              message: 'Must be a valid URL.'
+
+      - name: organizers
+        label: Organizers
+        type: object
+        list: true
+        required: true
+        fields:
+          - name: name
+            label: Organizer Name
+            type: string
+            required: true
+          - name: role
+            label: Organizer Role
+            type: string
+            required: true
+          - name: linkedin
+            label: LinkedIn Profile URL
+            type: string
+            required: true
+            pattern:
+              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              message: 'Must be a valid URL.'
+          - name: website
+            label: Personal Website URL (Optional)
+            type: string
+            required: false
+            pattern:
+              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              message: 'Must be a valid URL.'
+
+      - name: refreshments
+        label: Refreshments Information
+        type: object
+        required: true
+        fields:
+          - name: description
+            label: Description of Refreshments
+            type: text
+            required: true
+          - name: markdown
+            label: Is description in Markdown format?
+            type: boolean
+            default: false
+            required: true
+
+      - name: thingsToNote
+        label: Important Notes
+        type: object
+        required: true
+        fields:
+          - name: items
+            label: List of Notes
+            type: string
+            list: true
+            required: true
+          - name: markdown
+            label: Are notes in Markdown format?
+            type: boolean
+            default: false
+            required: true
+
+      - name: codeOfConductUrl
+        label: Code of Conduct URL
+        type: string
+        required: true
+        pattern:
+          regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+          message: 'Must be a valid URL.'
