@@ -25,12 +25,12 @@ const blogsForPage: CollectionEntry<"blog">[] = allBlogs.slice(
 	currentPage * BLOGS_PER_PAGE
 );
 
-/**TODO: returns featured items*/
+/**TODO: Returns featured items*/
 const featuredBlog: CollectionEntry<"blog">[] = allBlogs.filter(
 	(blog) => blog.data.featured === true
 );
 
-/** retuns all other items excpet featured*/
+/** Retuns all other items except featured*/
 const otherBlog: CollectionEntry<"blog">[] = allBlogs.filter(
 	(blog) => !blog.data.featured
 );
@@ -40,7 +40,7 @@ const otherBlog: CollectionEntry<"blog">[] = allBlogs.filter(
 	<Container>
 		<Card>
 				{
-					blogsForPage?.length !== 0 ? (
+					blogsForPage?.length > 0 ? (
 						<SearchForm />
 						<div class="grid grid-cols-1 gap-4 sm-grid-cols-2 lg:grid-cols-3 mt-16">
 							{blogsForPage?.map((blog) => <BlogCard blog={blog} />)}
