@@ -28,7 +28,7 @@ const { Content } = await render(entry);
 		<Card>
 			<Button href="/blogs" variant="secondary">&#8592; Back </Button>
 			<h1 class="text-4xl font-bold mt-8">{entry.data.title}</h1>
-			<h3 class="text-md mb-2">
+			<h3 class="text-sm mt-2 mb-4 text-slate-600">
 				Written by {entry.data.author} on {formatDate(entry.data.pubDate)}
 			</h3>
 			<Tags tags={entry.data.tags} />

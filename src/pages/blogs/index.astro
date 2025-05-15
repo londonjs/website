@@ -42,7 +42,7 @@ const otherBlog: CollectionEntry<"blog">[] = allBlogs.filter(
 				{
 					blogsForPage?.length > 0 ? (
 						<SearchForm />
-						<div class="grid grid-cols-1 gap-4 sm-grid-cols-2 lg:grid-cols-3 mt-16">
+						<div class="grid grid-cols-1 gap-4 sm-grid-cols-2 lg:grid-cols-3 place-content-center mt-16">
 							{blogsForPage?.map((blog) => <BlogCard blog={blog} />)}
 						</div>
 						<Pagination
