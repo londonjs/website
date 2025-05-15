@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import BlogCard from "@/components/blog/BlogCard.astro";
+import SearchForm from "@/components/blog/SearchForm.astro";
+import Base from "@/layouts/Base.astro";
+import Container from "@/components/common/Container.astro";
+import Button from "@/components/common/Button.astro";
+import Card from "@/components/common/Card.astro";
+
+const query: string | null = Astro.url.searchParams.get("query");
+
+const allBlogs: CollectionEntry<"blog">[] = await getCollection("blog");
+
+// Filter blogs based on query
+const searchResults = allBlogs.filter((blog) => {
+	const titleMatch: boolean =
+		blog?.data?.title &&
+		blog.data.title.toLowerCase().includes(query!.toLowerCase());
+
+	const bodyMatch: boolean =
+		blog?.data?.body &&
+		blog?.data?.body.toLowerCase().includes(query!.toLowerCase());
+
+	const slugMatch =
+		blog?.data?.slug &&
+		blog?.data?.slug.toLowerCase().includes(query!.toLowerCase());
+
+	return titleMatch || bodyMatch || slugMatch;
+});
+---
+
+<Base title="Search Results | London.js">
+	<Container>
+		<Card>
+			<Button href="/blogs" variant="secondary">&#8592; Back </Button>
+			<SearchForm />
+
+			<h1 class="text-2xl pb-3 mt-6">Results For <strong>{query}</strong></h1>
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				{searchResults.map((blog) => <BlogCard blog={blog} />)}
+			</div>
+		</Card>
+	</Container>
+</Base>

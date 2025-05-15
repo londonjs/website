@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Base from "@/layouts/Base.astro";
+
+import Pagination from "@/components/common/Pagination.astro";
+import Container from "@/components/common/Container.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
+import SearchForm from "@/components/blog/SearchForm.astro";
+import { BLOGS_PER_PAGE } from "@/constants";
+import Card from "@/components/common/Card.astro";
+
+
+const currentPage: number | null = +Astro.url.searchParams.get("page")! || 1;
+
+const allBlogs: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+	(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+		a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const totalPages: number = Math.ceil(allBlogs.length / BLOGS_PER_PAGE);
+
+const blogsForPage: CollectionEntry<"blog">[] = allBlogs.slice(
+	(currentPage - 1) * BLOGS_PER_PAGE,
+	currentPage * BLOGS_PER_PAGE
+);
+
+/**TODO: Returns featured items*/
+const featuredBlog: CollectionEntry<"blog">[] = allBlogs.filter(
+	(blog) => blog.data.featured === true
+);
+
+/** Retuns all other items except featured*/
+const otherBlog: CollectionEntry<"blog">[] = allBlogs.filter(
+	(blog) => !blog.data.featured
+);
+---
+
+<Base title="Blogs & Articles | London.js">
+	<Container>
+		<Card>
+				{
+					blogsForPage?.length > 0 ? (
+						<SearchForm />
+						<div class="grid grid-cols-1 gap-4 sm-grid-cols-2 lg:grid-cols-3 place-content-center mt-16">
+							{blogsForPage?.map((blog) => <BlogCard blog={blog} />)}
+						</div>
+						<Pagination
+							currentPage={currentPage}
+							totalPages={totalPages}
+							disablePrevious={currentPage === 1}
+							disableNext={currentPage === totalPages}
+						/>
+					) : (
+					<div class="text-center">
+						<h1 class="text-4xl sm:text-5xl font-black mb-6">
+							More Blogs Coming Soon!
+						</h1>
+						<p class="text-xl mb-8">No blogs found rightnow!</p>
+						<div class="flex flex-wrap gap-4 justify-center">
+							<a href="/" class="text-[#333333] font-bold hover:underline">
+								homepage →
+							</a>
+						</div>
+					</div>
+					)
+				}
+		</Card>
+	</Container>
+</Base>

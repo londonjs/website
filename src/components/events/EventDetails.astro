@@ -9,112 +9,120 @@ import Clock from "../icons/Clock.astro";
 import { markdownToHtml } from "../../utils/markdown";
 
 interface Props {
-  meetup: CollectionEntry<"meetups">;
+	meetup: CollectionEntry<"meetups">;
 }
 
 const { meetup } = Astro.props;
 
 const refreshmentsHtml = meetup.data.refreshments.markdown
-  ? await markdownToHtml(meetup.data.refreshments.description)
-  : meetup.data.refreshments.description;
+	? await markdownToHtml(meetup.data.refreshments.description)
+	: meetup.data.refreshments.description;
 ---
 
 <Container>
-  <article class="space-y-8">
-    <!-- Event Header -->
-    <div
-      class="flex flex-col gap-6 mb-6 sm:flex-row sm:items-center sm:justify-between bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6"
-    >
-      <h1 class="text-3xl font-bold text-center sm:text-left">
-        {meetup.data.title}
-      </h1>
+	<article class="space-y-8">
+		<!-- Event Header -->
+		<div
+			class="flex flex-col gap-6 mb-6 sm:flex-row sm:items-center sm:justify-between bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6"
+		>
+			<h1 class="text-3xl font-bold text-center sm:text-left">
+				{meetup.data.title}
+			</h1>
 
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <time class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
-          <Calendar class="h-5 w-5 flex-shrink-0" />
-          {
-            meetup.data.date.toLocaleDateString("en-GB", {
-              weekday: "long",
-              day: "numeric",
-              month: "long"
-            })
-          }
-        </time>
-        <span class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
-          <Clock class="h-5 w-5 flex-shrink-0" />
-          {meetup.data.startTime} - {meetup.data.endTime}
-        </span>
-      </div>
+			<div class="flex flex-col sm:flex-row items-center gap-4">
+				<time class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
+					<Calendar class="h-5 w-5 flex-shrink-0" />
+					{
+						meetup.data.date.toLocaleDateString("en-GB", {
+							weekday: "long",
+							day: "numeric",
+							month: "long",
+						})
+					}
+				</time>
+				<span class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
+					<Clock class="h-5 w-5 flex-shrink-0" />
+					{meetup.data.startTime} - {meetup.data.endTime}
+				</span>
+			</div>
 
-      <a
-        href={meetup.data.meetupUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block px-8 py-4 bg-[#333333] text-white font-bold rounded-xl hover:bg-[#444444] transition-colors shadow-[4px_4px_0_#666666] hover:shadow-[6px_6px_0_#666666] hover:-translate-y-0.5"
-      >
-        RSVP on Meetup →
-      </a>
-    </div>
-  </article>
+			<a
+				href={meetup.data.meetupUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-block px-8 py-4 bg-[#333333] text-white font-bold rounded-xl hover:bg-[#444444] transition-colors shadow-[4px_4px_0_#666666] hover:shadow-[6px_6px_0_#666666] hover:-translate-y-0.5"
+			>
+				RSVP on Meetup →
+			</a>
+		</div>
+	</article>
 
-  <!-- Main content grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Speakers -->
-    {
-      meetup.data.talks && (
-        <div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
-          <h2 class="text-2xl font-semibold mb-4">Speakers</h2>
-          <ul class="space-y-6">
-            {meetup.data.talks.map((talk) => (
-              <li class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
-                <h3 class="font-medium text-lg">{talk.speaker.name}</h3>
-                {talk.speaker.role && <p class="text-gray-600 text-sm">{talk.speaker.role}</p>}
-                <p class="mt-2 text-gray-800">{talk.title}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }
+	<!-- Main content grid -->
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<!-- Speakers -->
+		{
+			meetup.data.talks && (
+				<div class="bg-white border-4 border-[#333333] rounded-3xl shadow-[4px_4px_0_#333333] p-6">
+					<h2 class="text-2xl font-semibold mb-4">Speakers</h2>
+					<ul class="space-y-6">
+						{meetup.data.talks.map((talk) => (
+							<li class="border-b border-gray-200 last:border-0 pb-6 last:pb-0">
+								<h3 class="font-medium text-lg">{talk.speaker.name}</h3>
+								{talk.speaker.role && (
+									<p class="text-gray-600 text-sm">{talk.speaker.role}</p>
+								)}
+								<p class="mt-2 text-gray-800">{talk.title}</p>
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
 
-    <!-- Location -->
-    <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
+		<!-- Location -->
+		<Map
+			location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
+		/>
 
-    <!-- Sponsors -->
-    {
-      meetup.data.sponsors && (
-        <CardSection title="Sponsors">
-          <Sponsors showSponsoredBy={false} sponsors={meetup.data.sponsors} />
-        </CardSection>
-      )
-    }
+		<!-- Sponsors -->
+		{
+			meetup.data.sponsors && (
+				<CardSection title="Sponsors">
+					<Sponsors showSponsoredBy={false} sponsors={meetup.data.sponsors} />
+				</CardSection>
+			)
+		}
 
-    <!-- Refreshments -->
-    <CardSection title="Refreshments">
-      <div class="prose prose-sm" set:html={refreshmentsHtml} />
-    </CardSection>
+		<!-- Refreshments -->
+		<CardSection title="Refreshments">
+			<div class="prose prose-sm" set:html={refreshmentsHtml} />
+		</CardSection>
 
-    <!-- Things to note -->
-    <CardSection title="Things to Note">
-      <ul class="list-disc ml-4 space-y-2">
-        {meetup.data.thingsToNote.items.map((item) => <li class="text-gray-800">{item}</li>)}
-      </ul>
-    </CardSection>
+		<!-- Things to note -->
+		<CardSection title="Things to Note">
+			<ul class="list-disc ml-4 space-y-2">
+				{
+					meetup.data.thingsToNote.items.map((item) => (
+						<li class="text-gray-800">{item}</li>
+					))
+				}
+			</ul>
+		</CardSection>
 
-    <!-- Code of Conduct -->
-    <CardSection title="Code of Conduct">
-      <p class="text-gray-800">
-        We are committed to providing a friendly, safe and welcoming environment for all. Please
-        read our
-        <a
-          href={meetup.data.codeOfConductUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-[#333333] font-bold hover:underline"
-        >
-          Code of Conduct →
-        </a>
-      </p>
-    </CardSection>
-  </div>
+		<!-- Code of Conduct -->
+		<CardSection title="Code of Conduct">
+			<p class="text-gray-800">
+				We are committed to providing a friendly, safe and welcoming environment
+				for all. Please read our
+				<a
+					href={meetup.data.codeOfConductUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-[#333333] font-bold hover:underline"
+				>
+					Code of Conduct →
+				</a>
+			</p>
+		</CardSection>
+	</div>
 </Container>

@@ -1,0 +1,41 @@
+---
+
+---
+
+<form
+	id="search-form"
+	class="flex items-center justify-center my-8"
+	action="/blogs/search"
+>
+	<label for="search-input" class="sr-only">Search</label>
+	<div class="relative w-xl">
+		<input
+			type="text"
+			id="query"
+			name="query"
+			class="bg-gray-50 border border-2 border-black-300 text-gray-900 text-md font-md rounded-lg focus:ring-black focus:border-black block w-full p-4"
+			placeholder="Search blogs ..."
+			required
+		/>
+	</div>
+	<button
+		type="submit"
+		class="p-4.5 ms-4 text-sm font-medium text-white hover:text-black bg-black rounded-lg border border-black hover:border-black border-2 hover:bg-white"
+	>
+		<svg
+			class="w-4 h-4"
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 20 20"
+		>
+			<path
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+		</svg>
+		<span class="sr-only">Search</span>
+	</button>
+</form>

@@ -7,28 +7,25 @@ import { getCollection } from "astro:content";
 
 const allMeetups = await getCollection("meetups");
 const pastMeetups = allMeetups
-  .filter(meetup => meetup.data.status === "past")
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+	.filter((meetup) => meetup.data.status === "past")
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Base title="Past Events | London.js">
-  <Container>
-    <Card padding="p-6" class="mb-8">
-      <h1 class="text-3xl sm:text-4xl font-black text-center">Past Events</h1>
-      <p class="text-gray-600 text-center mt-4">
-        Looking for our next event? Check out our{" "}
-        <a 
-          href="/" 
-          class="text-[#333333] font-bold hover:underline"
-        >
-          homepage →
-        </a>
-      </p>
-    </Card>
+	<Container>
+		<Card padding="p-6" class="mb-8">
+			<h1 class="text-3xl sm:text-4xl font-black text-center">Past Events</h1>
+			<p class="text-gray-600 text-center mt-4">
+				Looking for our next event? Check out our{" "}
+				<a href="/" class="text-[#333333] font-bold hover:underline">
+					homepage →
+				</a>
+			</p>
+		</Card>
 
-    <EventList 
-      events={pastMeetups} 
-      emptyMessage="No past events to show yet. Stay tuned for our upcoming events!" 
-    />
-  </Container>
+		<EventList
+			events={pastMeetups}
+			emptyMessage="No past events to show yet. Stay tuned for our upcoming events!"
+		/>
+	</Container>
 </Base>

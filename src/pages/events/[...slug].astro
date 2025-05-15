@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import EventDetails from "../../components/events/EventDetails.astro";
+
+/**
+ * static rendering enabled true
+ * */
+export const prerender = true;
+
+export async function getStaticPaths() {
+	const meetups = await getCollection("meetups");
+	return meetups.map((meetup) => ({
+		params: { slug: meetup.data.slug },
+		props: { meetup },
+	}));
+}
+
+const { meetup } = Astro.props;
+---
+
+<Base title={`${meetup.data.title} | London.js`}>
+	<EventDetails meetup={meetup} />
+</Base>
