@@ -64,7 +64,7 @@ content:
             type: string
             required: false
             pattern:
-              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
               message: 'Must be a valid URL.'
 
       - name: meetupUrl
@@ -72,7 +72,7 @@ content:
         type: string
         required: true
         pattern:
-          regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+          regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
           message: 'Must be a valid URL.'
 
       - name: description
@@ -142,7 +142,7 @@ content:
             type: string
             required: true
             pattern:
-              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
               message: 'Must be a valid URL.'
 
       - name: organizers
@@ -177,14 +177,14 @@ content:
             type: string
             required: true
             pattern:
-              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
               message: 'Must be a valid URL.'
           - name: website
             label: Personal Website URL (Optional)
             type: string
             required: false
             pattern:
-              regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
               message: 'Must be a valid URL.'
 
       - name: refreshments
@@ -234,5 +234,5 @@ content:
         required: true
         default: "http://confcodeofconduct.com"
         pattern:
-          regex: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+          regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
           message: 'Must be a valid URL.'
