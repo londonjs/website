@@ -12,6 +12,7 @@
   "description": {
     "markdown": "The fifth meetup of the year! Join London.js for an evening of JavaScript talks, networking, and refreshments!"
   },
+  "filename_convention": "meetup-may-25",
   "talks": [
     {
       "speaker": {
@@ -19,6 +20,13 @@
         "role": "Flagsmith CoFounder + OpenFeature Governance Board"
       },
       "title": "Building a Project to 2 Billion Feature Flags Served"
+    },
+    {
+      "speaker": {
+        "name": "Rizwana Akmal",
+        "role": "Senior Engineer at Vercel"
+      },
+      "title": "The Ripples From Pebbles"
     }
   ],
   "sponsors": [
