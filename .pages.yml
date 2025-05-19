@@ -34,17 +34,11 @@ content:
         label: Start Time (HH:MM)
         type: string
         required: true
-        pattern:
-          regex: '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'
-          message: 'Please use HH:MM format (e.g., 18:00).'
 
       - name: endTime
         label: End Time (HH:MM)
         type: string
         required: true
-        pattern:
-          regex: '^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$'
-          message: 'Please use HH:MM format (e.g., 21:00).'
 
       - name: location
         label: Location
@@ -63,17 +57,11 @@ content:
             label: Google Maps Link (Optional)
             type: string
             required: false
-            pattern:
-              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-              message: 'Must be a valid URL.'
 
       - name: meetupUrl
         label: Meetup.com URL (or similar)
         type: string
         required: true
-        pattern:
-          regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-          message: 'Must be a valid URL.'
 
       - name: description
         label: Event Description
@@ -89,7 +77,7 @@ content:
         label: Filename Convention (e.g., meetup-may-25)
         type: string
         required: true
-        description: "Enter the JSON file name. Current convention: `meetup-[month]-[yy]`, using the full lowercase month and a two-digit year (e.g., `meetup-may-25`)."
+        description: "Enter the JSON filename base. Convention: `meetup-[month]-[yy]`, using the full lowercase month and a two-digit year (e.g., `meetup-may-25`)."
 
       - name: slug
         label: URL Slug (Optional)
@@ -141,9 +129,6 @@ content:
             label: Sponsor Website URL
             type: string
             required: true
-            pattern:
-              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-              message: 'Must be a valid URL.'
 
       - name: organizers
         label: Organizers
@@ -176,16 +161,10 @@ content:
             label: LinkedIn Profile URL
             type: string
             required: true
-            pattern:
-              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-              message: 'Must be a valid URL.'
           - name: website
             label: Personal Website URL (Optional)
             type: string
             required: false
-            pattern:
-              regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-              message: 'Must be a valid URL.'
 
       - name: refreshments
         label: Refreshments Information
@@ -233,6 +212,3 @@ content:
         type: string
         required: true
         default: "http://confcodeofconduct.com"
-        pattern:
-          regex: '^https?:\/\/[^\s\/$.?#].[^\s]*$'
-          message: 'Must be a valid URL.'
