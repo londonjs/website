@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import Base from "@/layouts/Base.astro";
+import { capitalize } from "@/utils";
+import BlogCard from "@/components/blog/BlogCard.astro";
+import Button from "@/components/common/Button.astro";
+import Container from "@/components/common/Container.astro";
+import Card from "@/components/common/Card.astro";
+
+const { tag } = Astro.params;
+
+if (tag === undefined) {
+	throw new Error("Tag is required");
+}
+
+const allBlogs: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+	(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+		b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const tagBlogs = allBlogs.filter((blog) => blog.data.tags.includes(tag));
+---
+
+<Base title={`${tag} | London.js`}>
+	<Container>
+		<Card>
+			<Button href="/blogs" variant="secondary" class="mt-4"
+				>&#8592; Back
+			</Button>
+
+			<h1 class="text-2xl font-bold pb-1 mt-8">#{capitalize(tag)}</h1>
+			<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+				{tagBlogs.map((blog) => <BlogCard blog={blog} />)}
+			</div>
+		</Card>
+	</Container>
+</Base>
