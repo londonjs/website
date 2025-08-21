@@ -1,6 +1,7 @@
 ---
 import GitHubLogo from '@/components/icons/GitHub.astro'
-import LinkedIn from "@/components/icons/LinkedIn.astro";
+import LinkedInLogo from "@/components/icons/LinkedIn.astro";
+import MeetupLogo from "@/components/icons/Meetup.astro";
 
 interface Props {
   class?: string;
@@ -49,7 +50,16 @@ const { class: className } = Astro.props;
        aria-label="LondonJS on LinkedIn"
        class="hover:text-[#f0db4e] transition-colors"
    >
-     <LinkedIn class="w-6 h-6" />
+     <LinkedInLogo class="w-6 h-6" />
+   </a>
+   <a
+       href="https://www.meetup.com/london-js"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="LondonJS on Meetup"
+       class="hover:text-[#f0db4e] transition-colors"
+   >
+     <MeetupLogo class="w-6 h-6" />
    </a>
  </div>
 </nav>
