@@ -1,0 +1,65 @@
+{
+  "title": "London.js @ VEED.IO",
+  "date": "2025-09-04",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "location": {
+    "venue": "VEED",
+    "address": "17-18 Clere St, London EC2A 4LJ",
+    "mapLink": "https://maps.app.goo.gl/fX5nME1fF2wLtfHZA"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/310468158/",
+  "description": {
+    "markdown": "Our 6th event of 2025 & first event back after our Summer break 🎉"
+  },
+  "filename_convention": "meetup-sep-25",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Speakers to be announced!"
+      },
+      "title": "TBA"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "VEED",
+      "logo": "/sponsors/veed.png",
+      "url": "https://www.veed.io/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Program Lead, NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Contract, Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/",
+      "website": "https://weareplanit.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
