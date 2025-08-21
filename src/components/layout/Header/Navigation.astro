@@ -1,4 +1,7 @@
 ---
+import GitHubLogo from '@/components/icons/GitHub.astro'
+import LinkedIn from "@/components/icons/LinkedIn.astro";
+
 interface Props {
   class?: string;
 }
@@ -6,25 +9,47 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<nav class={`flex gap-6 ${className}`}>
-  <a 
-    href="https://www.meetup.com/london-js" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    class="hover:text-[#f0db4e] transition-colors font-bold text-xl"
-  >
-    Join Us
-  </a>
-  <a 
-    href="/events" 
-    class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
-  >
-    Events
-  </a>
-  <a 
-    href="/about" 
-    class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
-  >
-    About
-  </a>
+<nav class={`flex justify-between gap-6 w-full  ${className}`}>
+  <div class="flex flex-fill flex-col md:flex-row gap-6">
+    <a
+        href="https://www.meetup.com/london-js"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-[#f0db4e] transition-colors font-bold text-xl"
+    >
+      Join Us
+    </a>
+    <a
+        href="/events"
+        class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
+    >
+      Events
+    </a>
+    <a
+        href="/about"
+        class="nav-link hover:text-[#f0db4e] transition-colors font-bold text-xl"
+    >
+      About
+    </a>
+  </div>
+  <div class="flex gap-6">
+    <a
+       href="https://github.com/londonjs"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="LondonJS on GitHub"
+       class="hover:text-[#f0db4e] transition-colors"
+    >
+      <GitHubLogo class="w-6 h-6" />
+    </a>
+    <a
+       href="https://www.linkedin.com/company/london-js"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="LondonJS on LinkedIn"
+       class="hover:text-[#f0db4e] transition-colors"
+   >
+     <LinkedIn class="w-6 h-6" />
+   </a>
+ </div>
 </nav>
