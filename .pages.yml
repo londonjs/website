@@ -8,7 +8,7 @@ content:
     type: collection
     path: src/content/meetups
     format: json
-    filename: '{{fields.filename_convention}}.json'
+    filename: '{fields.filename_convention}.json'
     view:
       primary: title
       fields: [title, date, location.venue]
