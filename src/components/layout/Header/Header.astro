@@ -3,12 +3,15 @@ import Container from "../../common/Container.astro";
 import Navigation from "./Navigation.astro";
 import MobileMenu from "./MobileMenu.astro";
 import Menu from "../../icons/Menu.astro";
+import { getMeetupMembers } from "@/lib/getMeetupMembers.ts";
 
-interface Props {
-  members?: number;
+
+let members;
+try {
+  members = await getMeetupMembers();
+} catch (error) {
+  console.error("Failed to fetch meetup members:", error);
 }
-
-const { members } = Astro.props;
 ---
 
 <header class="py-8">
