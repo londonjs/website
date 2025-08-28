@@ -16,9 +16,24 @@
   "talks": [
     {
       "speaker": {
-        "name": "Speakers to be announced!"
+        "name": "Máté Nagy",
+        "role": "Staff Engineer, VEED.IO"
       },
-      "title": "TBA"
+      "title": "Performance profiling and optimization in Javascript"
+    },
+    {
+      "speaker": {
+        "name": "Naily Makangu",
+        "role": "Fractional Product & Tech Lead, The Mary Poppins of Startups"
+      },
+      "title": "We’re Late Again: The Delivery Problems AI Can’t Solve"
+    },
+    {
+      "speaker": {
+        "name": "Khadija Al-Selini & Nkechi Anyanwu",
+        "role": "Founding Engineers, Vouchsafe"
+      },
+      "title": " How We Built an Agentic Crew in TypeScript"
     }
   ],
   "sponsors": [
