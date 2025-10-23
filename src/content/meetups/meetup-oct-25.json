@@ -1,0 +1,73 @@
+{
+  "title": "London.js @ loveholidays ☀️ 🏖️",
+  "date": "2025-10-30",
+  "startTime": "18:00",
+  "endTime": "20:30",
+  "location": {
+    "venue": "3 Shortlands",
+    "address": "3 Shortlands, London W6 8DA",
+    "mapLink": "https://maps.app.goo.gl/cDnZirZ58fqSm4xm9"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/311580572/",
+  "description": {
+    "markdown": "Join [London.js](http://london.js/) on **Thursday 30th October 2025** from **6pm** hosted by our friends over at **loveholidays ☀️ 🏖️**"
+  },
+  "filename_convention": "meetup-oct-25",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Dr Tracy Gardner",
+        "role": "Co-Founder & CTO Flip Computing"
+      },
+      "title": "Flock XR - The open source 3D coding and creation tool for young people"
+    },
+    {
+      "speaker": {
+        "name": "Gergely Krista",
+        "role": "NatWest Group AI Innovation Engineer"
+      },
+      "title": "How I Built ProtoCore: A Real Story of Human + AI Engineering"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "loveholidays",
+      "logo": "/loveholidays.png",
+      "url": "https://www.loveholidays.com/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Program Lead, NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Contract, Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/",
+      "website": "https://weareplanit.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
