@@ -1,0 +1,65 @@
+{
+  "title": "London.js @ Zoopla",
+  "date": "2025-11-27",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "location": {
+    "venue": "The Cooperage",
+    "address": "5 Copper Row, London SE1 2LH",
+    "mapLink": "https://maps.app.goo.gl/5krcREFjciAVWJY6A"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/311885003/",
+  "description": {
+    "markdown": "Our final event of 2025 - come & join us for an amazing end to a busy year!"
+  },
+  "filename_convention": "meetup-nov-25",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Craig Aspinall",
+        "role": "Product Engineer at PortSwigger"
+      },
+      "title": "How Not to Get Hacked by Job Applicants"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Zoopla",
+      "logo": "/sponsors/zoopla.png",
+      "url": "https://www.zoopla.co.uk/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Lead @ NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Technology @ Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-numi/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder of Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": false
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
