@@ -20,6 +20,13 @@
         "role": "Product Engineer at PortSwigger"
       },
       "title": "How Not to Get Hacked by Job Applicants"
+    },
+    {
+      "speaker": {
+        "name": "Paweł Bacza",
+        "role": "Senior Software Engineer at Zoopla"
+      },
+      "title": "Let's build an Agent. How hard it could be?"
     }
   ],
   "sponsors": [
