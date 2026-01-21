@@ -1,0 +1,69 @@
+{
+  "title": "London.js @ Accurx & Flagsmith",
+  "date": "2026-01-28",
+  "startTime": "18:30",
+  "endTime": "20:30",
+  "location": {
+    "venue": "Accurx",
+    "address": "7 Curtain Road, London, EC2A 2DF",
+    "mapLink": " https://maps.app.goo.gl/wqccD89qckbsuWz67"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/312955969/",
+  "description": {
+    "markdown": "We are back to it after a much needed break & we're kicking things off with a [London.js](http://london.js/) fan favourite..."
+  },
+  "filename_convention": "meetup-jan-26",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Announced soon! "
+      },
+      "title": "⏳"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Accurx",
+      "logo": "/sponsors/accurx.png",
+      "url": "https://www.accurx.com/"
+    },
+    {
+      "name": "Flagsmith",
+      "logo": "/sponsors/flagsmith.png",
+      "url": "https://www.flagsmith.com/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Lead at NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Technology at Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-albany/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
