@@ -16,9 +16,24 @@
   "talks": [
     {
       "speaker": {
-        "name": "Announced soon! "
+        "name": "Vahid Mohammadi",
+        "role": "Lead Frontend Engineer at Accurx"
       },
-      "title": "⏳"
+      "title": "Visualising and Enabling Code Migrations at Scale"
+    },
+    {
+      "speaker": {
+        "name": "Kyle Johnson",
+        "role": "Co-Founder at Flagsmith"
+      },
+      "title": "Feature Flags: A Safety Net in the AI Era"
+    },
+    {
+      "speaker": {
+        "name": "Elena Calvo Carazo",
+        "role": "Software Engineer at TryHackMe"
+      },
+      "title": "Models Gone Rogue: Securing AI Integrations"
     }
   ],
   "sponsors": [
