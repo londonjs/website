@@ -23,14 +23,14 @@
   ],
   "sponsors": [
     {
-      "name": "Incident.io",
-      "logo": "/incidentio.png",
-      "url": "https://incident.io/"
-    },
-    {
       "name": "Tessl",
       "logo": "/tessl.png",
       "url": "https://tessl.io/"
+    },
+    {
+      "name": "Incident.io",
+      "logo": "/incidentio.png",
+      "url": "https://incident.io/"
     }
   ],
   "organizers": [
