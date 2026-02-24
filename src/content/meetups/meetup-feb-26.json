@@ -16,9 +16,24 @@
   "talks": [
     {
       "speaker": {
-        "name": "Soon to be announced!"
+        "name": "Sahil Deshmukh",
+        "role": "Member of Technical Staff, Tessl"
       },
-      "title": "⏳"
+      "title": "I’ve Stopped Hand Writing Code! (And I'm not the only one)"
+    },
+    {
+      "speaker": {
+        "name": "Merlin Mason",
+        "role": "Product Engineer, incident"
+      },
+      "title": "Building a modern post-mortem writing experience"
+    },
+    {
+      "speaker": {
+        "name": "Gillian Yeomans",
+        "role": "Product Engineer, Granola"
+      },
+      "title": "Teaching My Computer to Be Helpful (And Occasionally Weird)"
     }
   ],
   "sponsors": [
