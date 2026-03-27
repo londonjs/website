@@ -84,6 +84,7 @@ pinning. Key changes: v4 switched to Node LTS, v5 upgraded
 artifact upload internally, to avoid creating duplicate artifacts.
 
 **Acceptance criteria**:
+
 - [ ] No workflow file contains an `@v` tag reference for any action
 - [ ] Every `uses:` line has a 40-character SHA followed by a `# vX.Y.Z` comment
 - [ ] Each SHA is verified via `gh api repos/{owner}/{repo}/git/commits/{sha}`
@@ -114,6 +115,7 @@ and create a `.node-version` file containing `22` in the repository root for
 consistency across all environments.
 
 **Acceptance criteria**:
+
 - [ ] Workflow file exists at `.github/workflows/ci.yml`
 - [ ] All actions pinned to SHA with version comment
 - [ ] `permissions` block grants only `contents: read`
@@ -138,11 +140,13 @@ redundant `pull_request` trigger.
 - Set top-level `permissions: contents: read`
 - Move `pages: write` and `id-token: write` to the `deploy` job only
 - Add concurrency control:
+
   ```yaml
   concurrency:
     group: pages-deploy
     cancel-in-progress: false
   ```
+
 - Reduce `schedule` cron from hourly (`0 * * * *`) to every 6 hours
   (`0 */6 * * *`) — balances data freshness (meetup member count) against CI
   minute usage. The hourly cron exists because `getMeetupMembers()` caches data
@@ -150,6 +154,7 @@ redundant `pull_request` trigger.
 - Pin all actions to SHA (per 1.1)
 
 **Acceptance criteria**:
+
 - [ ] `pull_request` is NOT in the triggers list
 - [ ] Both `build` and `deploy` jobs have `if: github.repository == 'londonjs/website'`
 - [ ] Top-level permissions are `contents: read` only
@@ -170,6 +175,7 @@ Pre-commit prevention is cheaper than remediation.
 3. Run `npx husky init` to create the `.husky/` directory
 4. Set `.husky/pre-commit` contents to: `npx lint-staged`
 5. Add `lint-staged` config to `package.json`:
+
    ```json
    {
      "lint-staged": {
@@ -177,7 +183,9 @@ Pre-commit prevention is cheaper than remediation.
      }
    }
    ```
+
 6. Create `.gitleaks.toml` in the repository root for false-positive management:
+
    ```toml
    [allowlist]
    description = "Known false positives"
@@ -187,8 +195,9 @@ Pre-commit prevention is cheaper than remediation.
    ```
 
 **gitleaks installation (not an npm package)**:
+
 - macOS: `brew install gitleaks`
-- Linux: Download binary from https://github.com/gitleaks/gitleaks/releases
+- Linux: Download binary from <https://github.com/gitleaks/gitleaks/releases>
 - Windows: `scoop install gitleaks` or `choco install gitleaks`
 
 If `gitleaks` is not installed locally, `lint-staged` will fail and block all
@@ -199,12 +208,14 @@ this requirement in `CONTRIBUTING.md` (Phase 4).
 are configured. Do NOT add lint/format steps to `lint-staged` in this phase.
 
 **Acceptance criteria**:
+
 - [ ] `husky` and `lint-staged` are in `devDependencies`
 - [ ] `package.json` has a `prepare` script that runs `husky`
 - [ ] `.husky/pre-commit` exists and runs `npx lint-staged`
 - [ ] `lint-staged` config runs gitleaks on all staged files
 - [ ] `.gitleaks.toml` exists with an allowlist section
 - [ ] Verify by running:
+
   ```bash
   echo "GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" > test-secret.txt
   git add test-secret.txt
@@ -237,6 +248,7 @@ secret-scan:
 permissions, which limits blast radius. This is standard industry practice.
 
 **Acceptance criteria**:
+
 - [ ] `secret-scan` job exists in `ci.yml`
 - [ ] Job uses `fetch-depth: 0` for full history scan
 - [ ] Action is pinned to SHA with version comment `# v2.3.9`
@@ -252,6 +264,7 @@ Vulnerability Reporting as the primary disclosure channel. Do NOT include
 personal email addresses.
 
 Content MUST include:
+
 - Heading: `# Security Policy`
 - Instructions to use GitHub's private vulnerability reporting feature, with a
   link to `https://github.com/londonjs/website/security/advisories/new`
@@ -263,6 +276,7 @@ Content MUST include:
 - Supported versions: latest on `main` only
 
 **Acceptance criteria**:
+
 - [ ] `SECURITY.md` exists at the repository root
 - [ ] Links to GitHub Private Vulnerability Reporting (not personal email)
 - [ ] Contains "do NOT open a public GitHub issue" instruction
@@ -278,20 +292,22 @@ Content MUST include:
 
 1. Install: `eslint`, `@eslint/js`, `typescript-eslint`, `eslint-plugin-astro`
 2. Create `eslint.config.js` using the flat config format:
+
    ```js
-   import js from "@eslint/js";
-   import tseslint from "typescript-eslint";
-   import astro from "eslint-plugin-astro";
+   import js from '@eslint/js';
+   import tseslint from 'typescript-eslint';
+   import astro from 'eslint-plugin-astro';
 
    export default [
      js.configs.recommended,
      ...tseslint.configs.recommended,
      ...astro.configs.recommended,
      {
-       ignores: ["dist/", ".astro/", "node_modules/", ".cache/"]
-     }
+       ignores: ['dist/', '.astro/', 'node_modules/', '.cache/'],
+     },
    ];
    ```
+
 3. Add `"lint": "eslint ."` to `package.json` scripts
 4. Run `npx eslint . --fix` to auto-fix existing code, then commit the fixes
 5. Verify `npm run lint` passes with zero errors
@@ -300,6 +316,7 @@ Content MUST include:
 Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 
 **Acceptance criteria**:
+
 - [ ] `eslint.config.js` exists using flat config format
 - [ ] Config extends `@eslint/js` recommended, `typescript-eslint` recommended,
       and `eslint-plugin-astro` recommended
@@ -313,6 +330,7 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 
 1. Install: `prettier`, `prettier-plugin-astro`
 2. Create `.prettierrc`:
+
    ```json
    {
      "semi": true,
@@ -323,7 +341,9 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
      "plugins": ["prettier-plugin-astro"]
    }
    ```
+
 3. Create `.prettierignore`:
+
    ```text
    dist/
    .astro/
@@ -331,6 +351,7 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
    package-lock.json
    .cache/
    ```
+
 4. Add `"format:check": "prettier --check ."` to `package.json` scripts
 5. Run `npx prettier --write .` to auto-format existing code, then commit
 6. Verify `npm run format:check` passes
@@ -339,6 +360,7 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 
 **Acceptance criteria**:
+
 - [ ] `.prettierrc` exists with the config above
 - [ ] `.prettierignore` exists
 - [ ] `npm run format:check` passes after auto-format
@@ -350,17 +372,19 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 
 1. Install: `markdownlint-cli2`
 2. Create `.markdownlint-cli2.jsonc`:
+
    ```jsonc
    {
      "config": {
        "default": true,
        "MD013": false,
-       "MD033": false
+       "MD033": false,
      },
      "globs": ["**/*.md"],
-     "ignores": ["node_modules", "dist"]
+     "ignores": ["node_modules", "dist"],
    }
    ```
+
 3. Add `"lint:md": "markdownlint-cli2"` to `package.json` scripts
 4. Run `npx markdownlint-cli2 --fix` to auto-fix existing markdown, then commit
 5. Verify `npm run lint:md` passes
@@ -369,6 +393,7 @@ Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 Do NOT update `lint-staged` yet — see task 2.4 for the combined update.
 
 **Acceptance criteria**:
+
 - [ ] `.markdownlint-cli2.jsonc` exists with `MD013` and `MD033` disabled
 - [ ] `npm run lint:md` passes after auto-fix
 - [ ] CI runs markdown lint after format check, before tests
@@ -385,25 +410,16 @@ complete final configuration:
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,astro}": [
-      "eslint --fix --max-warnings 0",
-      "prettier --write"
-    ],
-    "*.md": [
-      "markdownlint-cli2",
-      "prettier --write"
-    ],
-    "*.{css,json}": [
-      "prettier --write"
-    ],
-    "*": [
-      "gitleaks protect --staged --no-banner"
-    ]
+    "*.{js,jsx,ts,tsx,astro}": ["eslint --fix --max-warnings 0", "prettier --write"],
+    "*.md": ["markdownlint-cli2", "prettier --write"],
+    "*.{css,json}": ["prettier --write"],
+    "*": ["gitleaks protect --staged --no-banner"]
   }
 }
 ```
 
 **Acceptance criteria**:
+
 - [ ] `lint-staged` config in `package.json` matches the block above exactly
 - [ ] The gitleaks rule from Phase 1.4 is preserved in the `"*"` key
 - [ ] Verify by staging a `.ts` file and a `.md` file and running
@@ -456,6 +472,7 @@ jobs:
 ```
 
 **Acceptance criteria**:
+
 - [ ] Workflow file exists at `.github/workflows/codeql.yml`
 - [ ] All actions pinned to SHA with version comments
 - [ ] Top-level permissions are `contents: read`
@@ -482,6 +499,7 @@ pre-existing vulnerabilities that cannot be resolved immediately:
 4. Set a calendar reminder to revisit within 30 days
 
 **Acceptance criteria**:
+
 - [ ] `npm audit` step exists in `ci.yml` after `npm ci`
 - [ ] Audit level is `high`
 - [ ] If audit fails, remediation steps above are followed before proceeding
@@ -494,34 +512,35 @@ pre-existing vulnerabilities that cannot be resolved immediately:
 ```yaml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: 'weekly'
+      day: 'monday'
     open-pull-requests-limit: 10
     labels:
-      - "dependencies"
+      - 'dependencies'
     groups:
       production-deps:
-        dependency-type: "production"
+        dependency-type: 'production'
       dev-deps:
-        dependency-type: "development"
-        update-types: ["minor", "patch"]
+        dependency-type: 'development'
+        update-types: ['minor', 'patch']
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: 'weekly'
+      day: 'monday'
     labels:
-      - "ci"
+      - 'ci'
 ```
 
 **Key**: The `github-actions` ecosystem keeps SHA-pinned actions up to date.
 Without it, pinned SHAs become permanently stale.
 
 **Acceptance criteria**:
+
 - [ ] File exists at `.github/dependabot.yml`
 - [ ] Covers both `npm` and `github-actions` ecosystems
 - [ ] Groups are configured to reduce PR noise
@@ -583,6 +602,7 @@ registry URL), rename it to `.npmrc.example` before adding `.npmrc` to
 `.gitignore`.
 
 **Acceptance criteria**:
+
 - [ ] `.gitignore` covers all env file variants via `.env*` glob
 - [ ] `.gitignore` covers key material (`*.pem`, `*.key`, `*.p12`, `*.cert`)
 - [ ] `.gitignore` covers `.npmrc`
@@ -601,11 +621,13 @@ This has been verified.
 1. Add `.cache/` to `.gitignore`
 2. Run `git rm -r --cached .cache/`
 3. Verify build succeeds without the cached file:
+
    ```bash
    rm -rf .cache/ && npm run build
    ```
 
 **Acceptance criteria**:
+
 - [ ] `.cache/` is in `.gitignore`
 - [ ] `.cache/` is no longer tracked by git (`git ls-files .cache/` returns empty)
 - [ ] `rm -rf .cache/ && npm run build` completes without errors
@@ -631,6 +653,7 @@ correct by checking `gh api repos/londonjs/website --jq '.owner.login'` before
 creating the file. If the upstream has multiple maintainers, add them all.
 
 **Acceptance criteria**:
+
 - [ ] File exists at `.github/CODEOWNERS`
 - [ ] Uses the upstream maintainer handle(s), not the fork owner
 - [ ] Workflow and config files have explicit owner entries
@@ -662,6 +685,7 @@ creating the file. If the upstream has multiple maintainers, add them all.
 ```
 
 **Acceptance criteria**:
+
 - [ ] File exists at `.github/pull_request_template.md`
 - [ ] Includes checkboxes for type of change
 - [ ] Includes checklist with "tested locally", "code style", and "tests pass"
@@ -678,7 +702,7 @@ name: Sync Fork
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * 1'  # Weekly Monday 6am UTC
+    - cron: '0 6 * * 1' # Weekly Monday 6am UTC
 
 permissions:
   contents: write
@@ -705,6 +729,7 @@ someone creates a fork-of-the-fork, the workflow syncs from the original
 upstream, which is benign.
 
 **Acceptance criteria**:
+
 - [ ] Workflow file exists at `.github/workflows/sync-fork.yml`
 - [ ] Guard `if: github.repository != 'londonjs/website'` is present
 - [ ] Uses `--ff-only` merge (fails cleanly if branches have diverged)
@@ -722,7 +747,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 6 * * 1'  # Weekly Monday 6am UTC
+    - cron: '0 6 * * 1' # Weekly Monday 6am UTC
 
 permissions: read-all
 
@@ -750,6 +775,7 @@ jobs:
 ```
 
 **Acceptance criteria**:
+
 - [ ] Workflow file exists at `.github/workflows/scorecard.yml`
 - [ ] Guard `if: github.repository == 'londonjs/website'` is on the job
 - [ ] SARIF upload step is present
@@ -762,6 +788,7 @@ jobs:
 ### 4.1 Add issue templates
 
 **Action**: Create issue templates using GitHub's YAML form schema:
+
 - `.github/ISSUE_TEMPLATE/bug_report.yml` — at least 3 fields (description,
   steps to reproduce, expected behaviour)
 - `.github/ISSUE_TEMPLATE/feature_request.yml` — at least 3 fields (problem,
@@ -770,6 +797,7 @@ jobs:
   group for non-code questions
 
 **Acceptance criteria**:
+
 - [ ] Both templates render correctly on GitHub's "New Issue" page
 - [ ] Both use YAML form schema with at least 3 fields each
 - [ ] `config.yml` includes an external link to the Meetup group
@@ -777,6 +805,7 @@ jobs:
 ### 4.2 Create `CONTRIBUTING.md`
 
 **Action**: Write standalone contributing guidelines covering:
+
 - Development setup (`npm install`, Node.js 22 requirement)
 - Pre-commit hooks (auto-installed via `npm install`, gitleaks requirement)
 - How to run tests (`npm test`), lint (`npm run lint`), and build (`npm run build`)
@@ -785,6 +814,7 @@ jobs:
 - gitleaks installation instructions (macOS, Linux, Windows)
 
 **Acceptance criteria**:
+
 - [ ] `CONTRIBUTING.md` exists at the repository root
 - [ ] References `npm install`, `npm test`, `npm run lint`, `npm run build`
 - [ ] Documents pre-commit hooks and gitleaks installation
@@ -809,6 +839,7 @@ Add as a step after `npm run build`:
 ```
 
 **Acceptance criteria**:
+
 - [ ] SBOM step exists in `ci.yml` after the build step
 - [ ] Actions are pinned to SHA with version comments
 - [ ] SBOM artifact is visible in GitHub Actions run artifacts
@@ -824,6 +855,7 @@ workflows. The `withastro/action` in `deploy.yml` manages Node internally and
 does not need a separate `setup-node` step.
 
 **Acceptance criteria**:
+
 - [ ] All workflows containing `npm ci` use `actions/setup-node` with
       `cache: 'npm'`
 - [ ] Verified by running:
@@ -831,7 +863,7 @@ does not need a separate `setup-node` step.
 
 ### 4.5 Register for OpenSSF Best Practices badge
 
-**Action**: Register the project at https://www.bestpractices.dev/en and work
+**Action**: Register the project at <https://www.bestpractices.dev/en> and work
 toward the passing badge. Add the badge to `README.md`:
 
 ```markdown
@@ -840,6 +872,7 @@ toward the passing badge. Add the badge to `README.md`:
 ```
 
 **Acceptance criteria**:
+
 - [ ] Project is registered at bestpractices.dev
 - [ ] Badge URL in README resolves to a valid bestpractices.dev page
 - [ ] Scorecard badge URL is also added to README

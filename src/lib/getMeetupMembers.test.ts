@@ -123,17 +123,17 @@ describe('getMeetupMembers', () => {
   test('extracts member count from JSON-LD data', async () => {
     // Mock cache to be empty (file not found)
     vi.mocked(fs.readFile).mockRejectedValueOnce(new Error('File not found'));
-    
+
     // Mock fetch to return valid HTML with JSON-LD
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithJsonLd)
+      text: () => Promise.resolve(validHtmlWithJsonLd),
     });
 
     const result = await getMeetupMembers();
     expect(result).toBe(4075);
     expect(global.fetch).toHaveBeenCalledWith('https://meetup.com/london-js/');
-    
+
     // Check that writeFile was called with the correct data
     expect(fs.writeFile).toHaveBeenCalledTimes(1);
     expect(fs.writeFile).toHaveBeenCalledWith(
@@ -146,16 +146,18 @@ describe('getMeetupMembers', () => {
   test('uses cached data if less than 1 hour old', async () => {
     // Create a cache timestamp that is 30 minutes old
     const now = Date.now();
-    const thirtyMinutesAgo = now - (30 * 60 * 1000);
-    
+    const thirtyMinutesAgo = now - 30 * 60 * 1000;
+
     // Mock cache to return valid recent data
-    vi.mocked(fs.readFile).mockResolvedValueOnce(JSON.stringify({
-      count: 4200,
-      timestamp: thirtyMinutesAgo
-    }));
-    
+    vi.mocked(fs.readFile).mockResolvedValueOnce(
+      JSON.stringify({
+        count: 4200,
+        timestamp: thirtyMinutesAgo,
+      })
+    );
+
     const result = await getMeetupMembers();
-    
+
     // Should return cached count without calling fetch
     expect(result).toBe(4200);
     expect(global.fetch).not.toHaveBeenCalled();
@@ -165,26 +167,28 @@ describe('getMeetupMembers', () => {
   test('fetches new data if cache is older than 1 hour', async () => {
     // Create a cache timestamp that is 2 hours old
     const now = Date.now();
-    const twoHoursAgo = now - (2 * ONE_HOUR);
-    
+    const twoHoursAgo = now - 2 * ONE_HOUR;
+
     // Mock cache to return old data
-    vi.mocked(fs.readFile).mockResolvedValueOnce(JSON.stringify({
-      count: 4100,
-      timestamp: twoHoursAgo
-    }));
-    
+    vi.mocked(fs.readFile).mockResolvedValueOnce(
+      JSON.stringify({
+        count: 4100,
+        timestamp: twoHoursAgo,
+      })
+    );
+
     // Mock fetch to return new data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithJsonLd)
+      text: () => Promise.resolve(validHtmlWithJsonLd),
     });
-    
+
     const result = await getMeetupMembers();
-    
+
     // Should return new data from fetch
     expect(result).toBe(4075);
     expect(global.fetch).toHaveBeenCalledTimes(1);
-    
+
     // Check that writeFile was called with the updated data
     expect(fs.writeFile).toHaveBeenCalledTimes(1);
     expect(fs.writeFile).toHaveBeenCalledWith(
@@ -197,15 +201,15 @@ describe('getMeetupMembers', () => {
   test('handles errors in reading cache gracefully', async () => {
     // Mock cache read to throw unexpected error
     vi.mocked(fs.readFile).mockRejectedValueOnce(new Error('Unknown file system error'));
-    
+
     // Mock fetch to return valid data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithJsonLd)
+      text: () => Promise.resolve(validHtmlWithJsonLd),
     });
-    
+
     const result = await getMeetupMembers();
-    
+
     // Should proceed with fetching data
     expect(result).toBe(4075);
     expect(global.fetch).toHaveBeenCalledTimes(1);
@@ -214,11 +218,11 @@ describe('getMeetupMembers', () => {
   test('extracts member count from JSON-LD data with @graph structure', async () => {
     // Mock cache to be empty
     vi.mocked(fs.readFile).mockRejectedValueOnce(new Error('File not found'));
-    
+
     // Mock fetch to return valid HTML with JSON-LD in @graph structure
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithGraphJsonLd)
+      text: () => Promise.resolve(validHtmlWithGraphJsonLd),
     });
 
     const result = await getMeetupMembers();
@@ -229,7 +233,7 @@ describe('getMeetupMembers', () => {
     // Mock fetch to return HTML with member count in element
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithoutJsonLd)
+      text: () => Promise.resolve(validHtmlWithoutJsonLd),
     });
 
     const result = await getMeetupMembers();
@@ -240,7 +244,7 @@ describe('getMeetupMembers', () => {
     // Mock fetch to return HTML with member count in plain text
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtmlWithPlainText)
+      text: () => Promise.resolve(validHtmlWithPlainText),
     });
 
     const result = await getMeetupMembers();
@@ -250,25 +254,29 @@ describe('getMeetupMembers', () => {
   test('throws error when fetch fails', async () => {
     // Mock cache to be empty
     vi.mocked(fs.readFile).mockRejectedValueOnce(new Error('File not found'));
-    
+
     // Mock fetch to fail
     global.fetch = vi.fn().mockResolvedValue({
       ok: false,
       status: 404,
-      statusText: 'Not Found'
+      statusText: 'Not Found',
     });
 
-    await expect(getMeetupMembers()).rejects.toThrow('Error getting meetup members: Failed to fetch meetup page: 404 Not Found');
+    await expect(getMeetupMembers()).rejects.toThrow(
+      'Error getting meetup members: Failed to fetch meetup page: 404 Not Found'
+    );
   });
 
   test('throws error when member count is not found', async () => {
     // Mock fetch to return HTML without member count
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(invalidHtml)
+      text: () => Promise.resolve(invalidHtml),
     });
 
-    await expect(getMeetupMembers()).rejects.toThrow('Error getting meetup members: Member count not found on the meetup page');
+    await expect(getMeetupMembers()).rejects.toThrow(
+      'Error getting meetup members: Member count not found on the meetup page'
+    );
   });
 
   test('handles network errors', async () => {
@@ -299,10 +307,10 @@ describe('getMeetupMembers', () => {
 
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(htmlWithInvalidJson)
+      text: () => Promise.resolve(htmlWithInvalidJson),
     });
 
     const result = await getMeetupMembers();
     expect(result).toBe(5000);
   });
-}); 
+});

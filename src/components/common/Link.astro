@@ -6,16 +6,9 @@ interface Props {
   underline?: boolean;
 }
 
-const { 
-  href, 
-  external = false, 
-  class: className = "",
-  underline = true
-} = Astro.props;
+const { href, external = false, class: className = '', underline = true } = Astro.props;
 
-const externalProps = external
-  ? { target: "_blank", rel: "noopener noreferrer" }
-  : {};
+const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 
 const classes = `text-[#333333] font-bold ${underline ? 'hover:underline' : ''} ${className}`;
 ---
