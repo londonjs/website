@@ -1,5 +1,10 @@
 # Security & CI/CD Roadmap
 
+> **Status: ✅ COMPLETED** (2026-03-27)
+>
+> All 4 phases (33 tasks) have been implemented. See [CHANGELOG.md](CHANGELOG.md) for details.
+> Estimated OpenSSF Scorecard improvement: ~3.5/10 → ~8.5/10
+
 This document is an actionable roadmap for hardening this repository against
 supply chain attacks and aligning it with OpenSSF Scorecard, SLSA v1.0, and
 Linux Foundation open source best practices.
@@ -66,7 +71,9 @@ anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610        # v0.24.0
 
 ---
 
-## Phase 1: Critical — Supply Chain & Secret Detection
+## Phase 1: Critical — Supply Chain & Secret Detection ✅
+
+> **Status: Completed** - All acceptance criteria met.
 
 ### 1.1 Pin all GitHub Actions to full SHA hashes
 
@@ -284,7 +291,9 @@ Content MUST include:
 
 ---
 
-## Phase 2: High — Code Quality & Vulnerability Scanning
+## Phase 2: High — Code Quality & Vulnerability Scanning ✅
+
+> **Status: Completed** - All acceptance criteria met.
 
 ### 2.1 Add ESLint
 
@@ -567,7 +576,9 @@ The `secret-scan` job (from 1.5) runs as a separate parallel job.
 
 ---
 
-## Phase 3: Medium — Repository Hygiene & Hardening
+## Phase 3: Medium — Repository Hygiene & Hardening ✅
+
+> **Status: Completed** - All acceptance criteria met.
 
 ### 3.1 Extend `.gitignore`
 
@@ -783,7 +794,9 @@ jobs:
 
 ---
 
-## Phase 4: Low — Polish & Best Practices
+## Phase 4: Low — Polish & Best Practices ✅
+
+> **Status: Completed** - All acceptance criteria met.
 
 ### 4.1 Add issue templates
 
