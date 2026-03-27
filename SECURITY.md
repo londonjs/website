@@ -30,3 +30,13 @@ This security policy applies to:
 ## Supported Versions
 
 Only the latest version on the `main` branch is supported for security updates.
+
+## Known Vulnerabilities
+
+The following vulnerabilities are tracked but not actively remediated:
+
+| Package     | Severity | Issue                                                    | Reason                                                        | Status                |
+| ----------- | -------- | -------------------------------------------------------- | ------------------------------------------------------------- | --------------------- |
+| `smol-toml` | Medium   | DoS via thousands of consecutive commented lines in TOML | Dev dependency only (`markdownlint-cli2`); low practical risk | Tracked by Dependabot |
+
+This table documents accepted risks for transparency. All high and critical severity vulnerabilities are addressed immediately via CI (`npm audit --audit-level=high`).
