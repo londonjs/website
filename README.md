@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/londonjs/website/actions/workflows/ci.yml/badge.svg)](https://github.com/londonjs/website/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/londonjs/website/actions/workflows/codeql.yml/badge.svg)](https://github.com/londonjs/website/actions/workflows/codeql.yml)
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/XXXXX/badge)](https://www.bestpractices.dev/projects/XXXXX)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/londonjs/website/badge)](https://scorecard.dev/viewer/?uri=github.com/londonjs/website)
 
 The official website for the London.js Community. We host regular meetups featuring talks, networking, and discussions about all things JavaScript.
@@ -26,7 +25,7 @@ npm run build
 ### Prerequisites
 
 - **Node.js 22** or later
-- **npm** (comes with Node.js)
+- **npm 10** or later (comes with Node.js 22)
 - **gitleaks** (for pre-commit secret scanning - see [CONTRIBUTING.md](CONTRIBUTING.md))
 
 ## 📖 About
@@ -43,15 +42,13 @@ London.js is a community-driven meetup group focused on JavaScript and related t
 
 ## 📜 Available Scripts
 
-| Command                | Description                    |
-| ---------------------- | ------------------------------ |
-| `npm run dev`          | Start development server       |
-| `npm run build`        | Build for production           |
-| `npm run preview`      | Preview production build       |
-| `npm test`             | Run tests                      |
-| `npm run lint`         | Run ESLint                     |
-| `npm run format:check` | Check formatting with Prettier |
-| `npm run lint:md`      | Lint markdown files            |
+Key commands for development. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full list.
+
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Build for production     |
+| `npm test`      | Run tests                |
 
 ## 🔒 Security & Quality
 
@@ -68,7 +65,7 @@ For vulnerability disclosure, see [SECURITY.md](SECURITY.md).
 
 ## 📝 Adding a New Meetup
 
-1. Copy the template from `templates/meetup.json`
+1. Copy the template from [`src/templates/meetup.json`](src/templates/meetup.json)
 2. Create a new file in `src/content/meetups/` with the format `meetup-month-year.json`
 3. Fill in the event details following the template structure
 4. Add any sponsor logos to the `public/sponsors/` directory
@@ -78,7 +75,7 @@ You can use this command to create a new meetup:
 
 ```bash
 # From project root
-cp templates/meetup.json src/content/meetups/meetup-month-year.json
+cp src/templates/meetup.json src/content/meetups/meetup-month-year.json
 ```
 
 ### Required Fields

@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.0] - 2026-03-27
 
 ### Added - Security & CI/CD Hardening
 
@@ -75,7 +75,7 @@ This release implements comprehensive security hardening aligned with OpenSSF Sc
 ### Breaking Changes
 
 - **Node.js 22 required** - Projects using older Node versions must upgrade
-- **Pre-commit hooks required** - Contributors must install gitleaks locally
+- **Pre-commit hooks required** - Contributors must install gitleaks locally. Commits will fail if gitleaks is not installed; use `git commit --no-verify` to bypass (not recommended)
 
 ### Files Changed (84 files)
 
@@ -104,5 +104,5 @@ Initial release of the London.js Community Website.
 - Content collections for meetup data
 - GitHub Pages deployment
 
-[Unreleased]: https://github.com/londonjs/website/compare/main...HEAD
+[0.1.0]: https://github.com/londonjs/website/releases/tag/v0.1.0
 [0.0.1]: https://github.com/londonjs/website/releases/tag/v0.0.1

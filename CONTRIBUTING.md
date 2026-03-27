@@ -64,7 +64,11 @@ If you need to bypass hooks (not recommended), use `git commit --no-verify`.
 
 1. Create a new JSON file in `src/content/meetups/`
 2. Name it `meetup-{month}-{year}.json` (e.g., `meetup-jan-26.json`)
-3. Use the template from `src/templates/meetup.json`
+3. Use the [template](src/templates/meetup.json) as a starting point
+
+```bash
+cp src/templates/meetup.json src/content/meetups/meetup-jan-26.json
+```
 
 ### Meetup JSON Structure
 

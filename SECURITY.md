@@ -9,6 +9,11 @@ at london.js.org, please use GitHub's private vulnerability reporting feature:
 
 **Please do NOT open a public GitHub issue for security vulnerabilities.**
 
+### Alternative Contact
+
+If GitHub's vulnerability reporting is not suitable for your disclosure, you may
+contact the maintainers through the [London.js Meetup group](https://www.meetup.com/london-js/).
+
 ## Response Timeline
 
 - We will acknowledge your report within 48 hours
