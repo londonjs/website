@@ -1,0 +1,27 @@
+# Security Policy
+
+## Reporting a Vulnerability
+
+If you discover a security vulnerability in this repository or the deployed site
+at london.js.org, please use GitHub's private vulnerability reporting feature:
+
+<https://github.com/londonjs/website/security/advisories/new>
+
+**Please do NOT open a public GitHub issue for security vulnerabilities.**
+
+## Response Timeline
+
+- We will acknowledge your report within 48 hours
+- We will assess the vulnerability within 7 days
+- We will fix or mitigate the issue within 30 days
+
+## Scope
+
+This security policy applies to:
+
+- The `londonjs/website` repository
+- The deployed site at london.js.org
+
+## Supported Versions
+
+Only the latest version on the `main` branch is supported for security updates.

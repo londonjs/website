@@ -20,6 +20,8 @@ const {
 const variantClass = variant === 'primary' ? 'border-[#f0db4e]' : '';
 ---
 
-<div class={`bg-white ${border} ${rounded} ${shadow} ${padding} ${variantClass} ${className || ''}`}>
+<div
+  class={`bg-white ${border} ${rounded} ${shadow} ${padding} ${variantClass} ${className || ''}`}
+>
   <slot />
 </div>

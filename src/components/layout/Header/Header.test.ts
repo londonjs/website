@@ -9,28 +9,28 @@ const importHeader = () => import('./Header.astro');
 // Mock the dependencies
 vi.mock('../../common/Container.astro', () => ({
   default: ({ children }: any) => {
-    return { 
-      render: () => `<div class="container-mock">${children}</div>` 
+    return {
+      render: () => `<div class="container-mock">${children}</div>`,
     };
-  }
+  },
 }));
 
 vi.mock('./Navigation.astro', () => ({
-  default: () => ({ 
-    render: () => `<nav class="nav-mock">Navigation Mock</nav>` 
-  })
+  default: () => ({
+    render: () => `<nav class="nav-mock">Navigation Mock</nav>`,
+  }),
 }));
 
 vi.mock('./MobileMenu.astro', () => ({
-  default: () => ({ 
-    render: () => `<div class="mobile-menu-mock">Mobile Menu Mock</div>` 
-  })
+  default: () => ({
+    render: () => `<div class="mobile-menu-mock">Mobile Menu Mock</div>`,
+  }),
 }));
 
 vi.mock('../../icons/Menu.astro', () => ({
-  default: () => ({ 
-    render: () => `<div class="menu-icon-mock">Menu Icon Mock</div>` 
-  })
+  default: () => ({
+    render: () => `<div class="menu-icon-mock">Menu Icon Mock</div>`,
+  }),
 }));
 
 // Mock renderToString to avoid Astro runtime issues in tests
@@ -72,7 +72,7 @@ vi.mock('astro/runtime/server/index.js', () => ({
         </header>
       `;
     }
-  }
+  },
 }));
 
 describe('Header Component', () => {
@@ -84,28 +84,28 @@ describe('Header Component', () => {
   test('renders member count correctly with proper accessibility attributes', async () => {
     // Import the mocked renderToString
     const { renderToString } = await import('astro/runtime/server/index.js');
-    
+
     // Render header with members count - using null as component since we're mocking
     const html = await renderToString(null, { members: 12345 });
     document.body.innerHTML = html;
-    
+
     // Assert there's an element with role="status"
     const statusElement = document.querySelector('[role="status"]');
     expect(statusElement).not.toBeNull();
-    
+
     // Assert sr-only text is present
     const srOnlyText = document.querySelector('.sr-only');
     expect(srOnlyText).not.toBeNull();
     expect(srOnlyText?.textContent).toBe('London.js meetup membership:');
-    
+
     // Assert the formatted number appears
     const memberCountElement = document.querySelector('.font-semibold');
     expect(memberCountElement).not.toBeNull();
     expect(memberCountElement?.textContent).toBe('12,345');
-    
+
     // Assert aria-hidden is set on the number
     expect(memberCountElement?.getAttribute('aria-hidden')).toBe('true');
-    
+
     // Additional checks
     const paragraphElement = document.querySelector('p.text-sm');
     expect(paragraphElement).not.toBeNull();
@@ -116,16 +116,16 @@ describe('Header Component', () => {
   test('does not render member count when members is undefined', async () => {
     // Import the mocked renderToString
     const { renderToString } = await import('astro/runtime/server/index.js');
-    
+
     // Render header without members - using null as component since we're mocking
     const html = await renderToString(null, {});
     document.body.innerHTML = html;
-    
+
     // Assert the members section is not present
     const memberCountElement = document.querySelector('.font-semibold');
     expect(memberCountElement).toBeNull();
-    
+
     const srOnlyText = document.querySelector('.sr-only');
     expect(srOnlyText).toBeNull();
   });
-}); 
+});

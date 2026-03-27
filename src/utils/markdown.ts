@@ -1,7 +1,7 @@
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
 
 /**
  * Converts a markdown string to HTML
@@ -14,6 +14,6 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     .use(remarkRehype)
     .use(rehypeStringify)
     .process(markdown);
-  
+
   return result.toString();
 }

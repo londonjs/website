@@ -1,5 +1,8 @@
 # London.js Community Website
 
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/XXXXX/badge)](https://www.bestpractices.dev/projects/XXXXX)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/londonjs/website/badge)](https://scorecard.dev/viewer/?uri=github.com/londonjs/website)
+
 Hopefully the official website for the London.js Community. We host regular meetups featuring talks, networking, and discussions about all things JavaScript.
 
 ## 🚀 Quick Start
@@ -37,12 +40,14 @@ London.js is a community-driven meetup group focused on JavaScript and related t
 5. Test locally before committing
 
 You can use this command to create a new meetup:
+
 ```bash
 # From project root
 cp templates/meetup.json src/content/meetups/meetup-month-year.json
 ```
 
-### Required Fields:
+### Required Fields
+
 - All fields in the template are required except those marked (optional)
 - Dates must be in YYYY-MM-DD format
 - Times must be in 24-hour HH:MM format
@@ -53,24 +58,28 @@ cp templates/meetup.json src/content/meetups/meetup-month-year.json
 We welcome contributions of all kinds! Here are some ways you can help:
 
 ### Code Contributions
+
 - Bug fixes
 - Feature enhancements
 - Performance improvements
 - Documentation updates
 
 ### Content Contributions
+
 - Adding past events
 - Updating event information
 - Adding speaker details
 - Improving documentation
 
 ### Future Development Goals
+
 - Admin dashboard for easier event management
 - Enhanced speaker profiles
 - Event photo galleries
 - Community showcase section
 
 ### Development Process
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -94,7 +103,7 @@ npm run preview
 
 ## 📁 Project Structure
 
-```
+```text
 ├── src/
 │   ├── components/    # Reusable components
 │   ├── content/       # Content collections
