@@ -40,3 +40,9 @@ The following vulnerabilities are tracked but not actively remediated:
 | `smol-toml` | Medium   | DoS via thousands of consecutive commented lines in TOML | Dev dependency only (`markdownlint-cli2`); low practical risk | Tracked by Dependabot |
 
 This table documents accepted risks for transparency. All high and critical severity vulnerabilities are addressed immediately via CI (`npm audit --audit-level=high`).
+
+## Future Roadmap Items
+
+| Item                         | Priority | Owner    | Status                                                                                                               |
+| ---------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| Re-add gitleaks-action to CI | Medium   | @mcleo-d | Pending — request free license at gitleaks.io (free for open source orgs), then add as `GITLEAKS_LICENSE` org secret |
