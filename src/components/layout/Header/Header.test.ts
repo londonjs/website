@@ -1,14 +1,10 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest';
-import { getByText, queryByText } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 import '../../../test/setup';
 
-// Import the component - done at test time
-const importHeader = () => import('./Header.astro');
-
 // Mock the dependencies
 vi.mock('../../common/Container.astro', () => ({
-  default: ({ children }: any) => {
+  default: ({ children }: { children: string }) => {
     return {
       render: () => `<div class="container-mock">${children}</div>`,
     };
@@ -35,7 +31,12 @@ vi.mock('../../icons/Menu.astro', () => ({
 
 // Mock renderToString to avoid Astro runtime issues in tests
 vi.mock('astro/runtime/server/index.js', () => ({
-  renderToString: async (_component: any, props: any): Promise<string> => {
+  renderToString: async (
+    _component: unknown,
+    props: Record<string, unknown>,
+    _slots: unknown,
+    _metadata: unknown
+  ): Promise<string> => {
     // Simple mock implementation that generates test-friendly HTML
     if (props.members) {
       return `
@@ -47,7 +48,7 @@ vi.mock('astro/runtime/server/index.js', () => ({
                   <a href="/" class="text-3xl font-black font-arial">London.js</a>
                   <p class="text-sm font-medium" role="status">
                     <span class="sr-only">London.js meetup membership:</span>
-                    Join <span class="font-semibold" aria-hidden="true">${props.members.toLocaleString()}</span> members
+                    Join <span class="font-semibold" aria-hidden="true">${(props.members as number).toLocaleString()}</span> members
                   </p>
                 </div>
                 <nav class="hidden md:flex">Navigation</nav>
@@ -86,8 +87,9 @@ describe('Header Component', () => {
     const { renderToString } = await import('astro/runtime/server/index.js');
 
     // Render header with members count - using null as component since we're mocking
+    // @ts-expect-error - Mock has different signature for testing
     const html = await renderToString(null, { members: 12345 });
-    document.body.innerHTML = html;
+    document.body.innerHTML = html as string;
 
     // Assert there's an element with role="status"
     const statusElement = document.querySelector('[role="status"]');
@@ -118,8 +120,9 @@ describe('Header Component', () => {
     const { renderToString } = await import('astro/runtime/server/index.js');
 
     // Render header without members - using null as component since we're mocking
+    // @ts-expect-error - Mock has different signature for testing
     const html = await renderToString(null, {});
-    document.body.innerHTML = html;
+    document.body.innerHTML = html as string;
 
     // Assert the members section is not present
     const memberCountElement = document.querySelector('.font-semibold');

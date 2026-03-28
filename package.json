@@ -47,6 +47,7 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.8",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/typography": "^0.5.19",
     "@testing-library/dom": "^10.4.1",
@@ -60,6 +61,7 @@
     "markdownlint-cli2": "^0.22.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.2",
     "vi": "^1.0.0",
     "vitest": "^4.0.14"

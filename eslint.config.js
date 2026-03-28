@@ -22,4 +22,23 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'off',
     },
   },
+  {
+    files: ['**/*.jsx', '**/*.tsx'],
+    languageOptions: {
+      globals: {
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        console: 'readonly',
+        document: 'readonly',
+        window: 'readonly',
+      },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+  },
 ];
