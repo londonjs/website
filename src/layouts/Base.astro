@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css';
 import Header from '../components/layout/Header/Header.astro';
 import Footer from '../components/layout/Footer/Footer.astro';
 
@@ -9,10 +9,10 @@ interface Props {
   members?: number;
 }
 
-const { 
+const {
   title,
-  description = "London.js Community - A vibrant community where JavaScript developers of all levels come together to learn, share, and build with JavaScript.",
-  members
+  description = 'London.js Community - A vibrant community where JavaScript developers of all levels come together to learn, share, and build with JavaScript.',
+  members,
 } = Astro.props;
 ---
 
@@ -23,22 +23,22 @@ const {
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="London.js Community" />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    
+
     <!-- Fonts -->
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap"
       rel="stylesheet"
     />
-    
+
     <title>{title}</title>
   </head>
   <body class="font-poppins text-[#333333] bg-[#f0db4e] leading-relaxed min-h-screen flex flex-col">

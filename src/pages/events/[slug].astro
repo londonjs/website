@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from "../../layouts/Base.astro";
+import Base from '../../layouts/Base.astro';
 import EventDetails from '../../components/events/EventDetails.astro';
 
 export async function getStaticPaths() {
   const meetups = await getCollection('meetups');
-  return meetups.map(meetup => ({
+  return meetups.map((meetup) => ({
     params: { slug: meetup.data.slug },
     props: { meetup },
   }));

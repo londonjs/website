@@ -14,4 +14,4 @@ async function testGetMeetupMembers() {
 }
 
 // Run the test
-testGetMeetupMembers(); 
+testGetMeetupMembers();

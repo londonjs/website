@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Card from "../common/Card.astro";
-import Button from "../common/Button.astro";
-import EventCard from "../events/EventCard.astro";
-import Map from "../maps/Map.astro";
-import ReactCountdown from "../events/Countdown.jsx";
-import Arrow from "../icons/Arrow.astro";
+import type { CollectionEntry } from 'astro:content';
+import Card from '../common/Card.astro';
+import Button from '../common/Button.astro';
+import EventCard from '../events/EventCard.astro';
+import Map from '../maps/Map.astro';
+import ReactCountdown from '../events/Countdown.jsx';
+import Arrow from '../icons/Arrow.astro';
 
 interface Props {
-  meetup: CollectionEntry<"meetups">;
+  meetup: CollectionEntry<'meetups'>;
 }
 
 const { meetup } = Astro.props;
@@ -33,11 +33,5 @@ const { meetup } = Astro.props;
     <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
   </div>
 
-  <ReactCountdown
-    client:load
-    targetDate={meetup.data.date}
-    targetTime={meetup.data.startTime}
-    endTime={meetup.data.endTime}
-    location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
-  />
+  <ReactCountdown client:load targetDate={meetup.data.date} endTime={meetup.data.endTime} />
 </>

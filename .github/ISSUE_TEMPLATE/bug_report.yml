@@ -1,0 +1,46 @@
+name: Bug Report
+description: Report a bug or issue with the website
+labels: ['bug']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of what the bug is
+      placeholder: 'When I visit the events page...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: A clear description of what you expected to happen
+      placeholder: 'The page should display...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: Which browser(s) are you seeing the problem on?
+      placeholder: 'Chrome 120, Safari 17, Firefox 121'

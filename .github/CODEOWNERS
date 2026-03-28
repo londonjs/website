@@ -1,0 +1,8 @@
+# Default — upstream maintainer
+* @faisalagood
+
+# Workflow and config files require maintainer review
+.github/ @faisalagood
+astro.config.mjs @faisalagood
+package.json @faisalagood
+tsconfig.json @faisalagood
