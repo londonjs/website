@@ -52,12 +52,29 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      has-license: ${{ steps.check-license.outputs.has-license }}
     steps:
+      - name: Check for gitleaks license
+        id: check-license
+        run: |
+          if [ -n "${{ secrets.GITLEAKS_LICENSE }}" ]; then
+            echo "has-license=true" >> $GITHUB_OUTPUT
+            echo "✅ GITLEAKS_LICENSE found, proceeding with secret scan"
+          else
+            echo "has-license=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ GITLEAKS_LICENSE not set, skipping secret scan"
+            echo "To enable: request free license at https://gitleaks.io and add as GITLEAKS_LICENSE secret"
+          fi
+
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        if: steps.check-license.outputs.has-license == 'true'
         with:
           fetch-depth: 0
 
-      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
+      - name: Run gitleaks secret scan
+        if: steps.check-license.outputs.has-license == 'true'
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
