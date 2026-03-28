@@ -43,6 +43,6 @@ This table documents accepted risks for transparency. All high and critical seve
 
 ## Future Roadmap Items
 
-| Item                         | Priority | Owner    | Status                                                                                                               |
-| ---------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
-| Re-add gitleaks-action to CI | Medium   | @mcleo-d | Pending — request free license at gitleaks.io (free for open source orgs), then add as `GITLEAKS_LICENSE` org secret |
+| Item                         | Priority | Owner    | Status    |
+| ---------------------------- | -------- | -------- | --------- |
+| Re-add gitleaks-action to CI | Medium   | @mcleo-d | Completed |
