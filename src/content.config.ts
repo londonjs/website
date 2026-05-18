@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 import { isBefore, parse, format } from 'date-fns';
 
 const generateSlug = (dateStr: string, title: string): string => {
@@ -14,7 +15,7 @@ const generateSlug = (dateStr: string, title: string): string => {
 };
 
 const meetups = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/meetups' }),
   schema: z
     .object({
       title: z.string(),
