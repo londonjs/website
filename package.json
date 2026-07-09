@@ -61,7 +61,7 @@
     "markdownlint-cli2": "^0.23.0",
     "prettier": "^3.9.4",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.63.0",
     "vi": "^1.0.0",
     "vitest": "^4.1.10"
