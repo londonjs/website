@@ -1,0 +1,25 @@
+name: Sync Fork
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly Monday 6am UTC
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: github.repository != 'londonjs/website'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - run: |
+          git remote add upstream https://github.com/londonjs/website.git
+          git fetch upstream main
+          git checkout main
+          git merge upstream/main --ff-only
+          git push origin main

@@ -7,15 +7,10 @@ export interface Props {
   class?: string;
 }
 
-const {
-  variant = 'primary',
-  href,
-  external,
-  size = 'md',
-  class: className,
-} = Astro.props;
+const { variant = 'primary', href, external, size = 'md', class: className } = Astro.props;
 
-const baseStyles = 'inline-flex items-center justify-center gap-2 font-bold border-2 border-[#333333] rounded-xl shadow-[4px_4px_0_#333333] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[6px_6px_0_#333333] transition-all duration-200';
+const baseStyles =
+  'inline-flex items-center justify-center gap-2 font-bold border-2 border-[#333333] rounded-xl shadow-[4px_4px_0_#333333] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[6px_6px_0_#333333] transition-all duration-200';
 
 const variantStyles = {
   primary: 'bg-[#f0db4e] hover:bg-[#f0db4e]/90',
@@ -30,9 +25,7 @@ const sizeStyles = {
 
 const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className || ''}`;
 
-const externalProps = external
-  ? { target: "_blank", rel: "noopener noreferrer" }
-  : {};
+const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
 {

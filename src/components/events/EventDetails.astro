@@ -1,15 +1,15 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Sponsors from "../sponsors/Sponsors.astro";
-import Container from "../common/Container.astro";
-import CardSection from "../common/CardSection.astro";
-import Map from "../maps/Map.astro";
-import Calendar from "../icons/Calendar.astro";
-import Clock from "../icons/Clock.astro";
-import { markdownToHtml } from "../../utils/markdown";
+import type { CollectionEntry } from 'astro:content';
+import Sponsors from '../sponsors/Sponsors.astro';
+import Container from '../common/Container.astro';
+import CardSection from '../common/CardSection.astro';
+import Map from '../maps/Map.astro';
+import Calendar from '../icons/Calendar.astro';
+import Clock from '../icons/Clock.astro';
+import { markdownToHtml } from '../../utils/markdown';
 
 interface Props {
-  meetup: CollectionEntry<"meetups">;
+  meetup: CollectionEntry<'meetups'>;
 }
 
 const { meetup } = Astro.props;
@@ -33,10 +33,10 @@ const refreshmentsHtml = meetup.data.refreshments.markdown
         <time class="text-gray-600 flex items-center gap-2 whitespace-nowrap">
           <Calendar class="h-5 w-5 flex-shrink-0" />
           {
-            meetup.data.date.toLocaleDateString("en-GB", {
-              weekday: "long",
-              day: "numeric",
-              month: "long"
+            meetup.data.date.toLocaleDateString('en-GB', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
             })
           }
         </time>

@@ -8,7 +8,7 @@ interface Props {
     linkedin: string;
     website?: string;
     image: string;
-  }
+  };
 }
 
 const { organizer } = Astro.props;
@@ -29,16 +29,18 @@ const { organizer } = Astro.props;
         </span>
       </h3>
       <div class="mt-2 flex flex-wrap gap-3">
-        {organizer.twitter && (
-          <a
-            href={organizer.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-grey-600 font-bold hover:underline"
-          >
-            Twitter →
-          </a>
-        )}
+        {
+          organizer.twitter && (
+            <a
+              href={organizer.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-grey-600 font-bold hover:underline"
+            >
+              Twitter →
+            </a>
+          )
+        }
         <a
           href={organizer.linkedin}
           target="_blank"
@@ -47,16 +49,18 @@ const { organizer } = Astro.props;
         >
           LinkedIn →
         </a>
-        {organizer.website && (
-          <a
-            href={organizer.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-grey-600 font-bold hover:underline"
-          >
-            Website →
-          </a>
-        )}
+        {
+          organizer.website && (
+            <a
+              href={organizer.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm text-grey-600 font-bold hover:underline"
+            >
+              Website →
+            </a>
+          )
+        }
       </div>
     </div>
   </div>

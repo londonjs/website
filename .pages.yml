@@ -77,7 +77,7 @@ content:
         label: Filename Convention (e.g., meetup-may-25)
         type: string
         required: true
-        description: "Enter the JSON filename base. Convention: `meetup-[month]-[yy]`, using the full lowercase month and a two-digit year (e.g., `meetup-may-25`)."
+        description: 'Enter the JSON filename base. Convention: `meetup-[month]-[yy]`, using the full lowercase month and a two-digit year (e.g., `meetup-may-25`).'
 
       - name: slug
         label: URL Slug (Optional)
@@ -189,12 +189,12 @@ content:
         required: true
         default:
           items:
-            - "A desire to explore JavaScript from different points of view is absolutely recommended"
-            - "Feel free to bring your JS projects along"
-            - "All engineering levels are welcome"
-            - "Please RSVP to secure a place"
+            - 'A desire to explore JavaScript from different points of view is absolutely recommended'
+            - 'Feel free to bring your JS projects along'
+            - 'All engineering levels are welcome'
+            - 'Please RSVP to secure a place'
             - "Please ask plus 1's to sign up to the group & RSVP"
-            - "Spaces are limited so techies get priority"
+            - 'Spaces are limited so techies get priority'
           markdown: false
         fields:
           - name: items
@@ -211,4 +211,4 @@ content:
         label: Code of Conduct URL
         type: string
         required: true
-        default: "http://confcodeofconduct.com"
+        default: 'http://confcodeofconduct.com'

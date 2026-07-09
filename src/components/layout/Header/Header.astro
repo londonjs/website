@@ -1,16 +1,15 @@
 ---
-import Container from "../../common/Container.astro";
-import Navigation from "./Navigation.astro";
-import MobileMenu from "./MobileMenu.astro";
-import Menu from "../../icons/Menu.astro";
-import { getMeetupMembers } from "@/lib/getMeetupMembers.ts";
-
+import Container from '../../common/Container.astro';
+import Navigation from './Navigation.astro';
+import MobileMenu from './MobileMenu.astro';
+import Menu from '../../icons/Menu.astro';
+import { getMeetupMembers } from '@/lib/getMeetupMembers.ts';
 
 let members;
 try {
   members = await getMeetupMembers();
 } catch (error) {
-  console.error("Failed to fetch meetup members:", error);
+  console.error('Failed to fetch meetup members:', error);
 }
 ---
 
@@ -20,12 +19,18 @@ try {
       <div class="flex gap-6 items-center">
         <div class="flex flex-col">
           <a href="/" class="text-3xl font-black font-arial">London.js</a>
-          {members && (
-            <p class="text-sm font-medium" role="status">
-              <span class="sr-only">London.js meetup membership:</span>
-              Join <span class="font-semibold" aria-hidden="true">{members.toLocaleString()}</span> members
-            </p>
-          )}
+          {
+            members && (
+              <p class="text-sm font-medium" role="status">
+                <span class="sr-only">London.js meetup membership:</span>
+                Join{' '}
+                <span class="font-semibold" aria-hidden="true">
+                  {members.toLocaleString()}
+                </span>{' '}
+                members
+              </p>
+            )
+          }
         </div>
         <div class="flex flex-1">
           <Navigation class="hidden md:flex" />
@@ -60,7 +65,7 @@ try {
 
   function setActiveNavLink() {
     const currentPath = window.location.pathname;
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach((link) => {
       const href = link.getAttribute('href');
 
       if (href && (href === currentPath || (href !== '/' && currentPath.startsWith(href)))) {

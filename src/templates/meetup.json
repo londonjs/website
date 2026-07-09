@@ -41,11 +41,7 @@
     "markdown": true
   },
   "thingsToNote": {
-    "items": [
-      "List item 1",
-      "List item 2",
-      "etc..."
-    ],
+    "items": ["List item 1", "List item 2", "etc..."],
     "markdown": false
   },
   "codeOfConductUrl": "URL to code of conduct"

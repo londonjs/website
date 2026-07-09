@@ -6,7 +6,7 @@ import * as fs from 'node:fs/promises';
 vi.mock('node:fs/promises', () => ({
   readFile: vi.fn(),
   writeFile: vi.fn(),
-  mkdir: vi.fn()
+  mkdir: vi.fn(),
 }));
 
 // Import the module after mocking
@@ -35,11 +35,11 @@ describe('getMeetupMembers Cache', () => {
   beforeEach(() => {
     vi.stubGlobal('fetch', vi.fn());
     vi.clearAllMocks();
-    
+
     // Mock Date.now() to have a consistent reference time
     const mockNow = 1000 * 60 * 60 * 24; // 24 hours in ms
     vi.spyOn(Date, 'now').mockReturnValue(mockNow);
-    
+
     // Reset all mocks
     vi.mocked(fs.readFile).mockReset();
     vi.mocked(fs.writeFile).mockReset().mockResolvedValue(undefined);
@@ -53,19 +53,19 @@ describe('getMeetupMembers Cache', () => {
 
   test('should use cached data when cache is fresh (less than 1 hour old)', async () => {
     // Setup: Create a cache timestamp that is 30 minutes ago
-    const thirtyMinutesAgo = Date.now() - (30 * 60 * 1000);
+    const thirtyMinutesAgo = Date.now() - 30 * 60 * 1000;
     const mockCachedData = {
       count: 4100,
-      timestamp: thirtyMinutesAgo
+      timestamp: thirtyMinutesAgo,
     };
 
     // Mock readFile to return our "fresh" cache
     vi.mocked(fs.readFile).mockResolvedValue(JSON.stringify(mockCachedData));
-    
+
     // We shouldn't need fetch in this test, but mock it anyway to be sure
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtml)
+      text: () => Promise.resolve(validHtml),
     });
 
     // Execute the function
@@ -80,10 +80,10 @@ describe('getMeetupMembers Cache', () => {
 
   test('should fetch new data when cache is expired (more than 1 hour old)', async () => {
     // Setup: Create a cache timestamp that is 2 hours old
-    const twoHoursAgo = Date.now() - (2 * ONE_HOUR);
+    const twoHoursAgo = Date.now() - 2 * ONE_HOUR;
     const mockExpiredCache = {
       count: 4000,
-      timestamp: twoHoursAgo
+      timestamp: twoHoursAgo,
     };
 
     // Mock readFile to return an "expired" cache
@@ -92,7 +92,7 @@ describe('getMeetupMembers Cache', () => {
     // Mock fetch to return new data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtml)
+      text: () => Promise.resolve(validHtml),
     });
 
     // Execute the function
@@ -116,7 +116,7 @@ describe('getMeetupMembers Cache', () => {
     // Mock fetch to return data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtml)
+      text: () => Promise.resolve(validHtml),
     });
 
     // Execute the function
@@ -141,7 +141,7 @@ describe('getMeetupMembers Cache', () => {
     // Mock fetch to return data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtml)
+      text: () => Promise.resolve(validHtml),
     });
 
     // Execute the function
@@ -163,7 +163,7 @@ describe('getMeetupMembers Cache', () => {
     // Mock fetch to return data
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      text: () => Promise.resolve(validHtml)
+      text: () => Promise.resolve(validHtml),
     });
 
     // Execute the function without errors even if cache writing fails
@@ -171,7 +171,7 @@ describe('getMeetupMembers Cache', () => {
 
     // Should still return the correct count despite cache write failure
     expect(result).toBe(4200);
-    
+
     // Verify that a write was attempted
     expect(fs.writeFile).toHaveBeenCalled();
   });
@@ -184,10 +184,12 @@ describe('getMeetupMembers Cache', () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: false,
       status: 404,
-      statusText: 'Not Found'
+      statusText: 'Not Found',
     });
 
     // Execute the function and expect it to throw
-    await expect(getMeetupMembers()).rejects.toThrow('Error getting meetup members: Failed to fetch meetup page: 404 Not Found');
+    await expect(getMeetupMembers()).rejects.toThrow(
+      'Error getting meetup members: Failed to fetch meetup page: 404 Not Found'
+    );
   });
-}); 
+});
