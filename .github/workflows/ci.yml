@@ -20,6 +20,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
+      - run: npm install --global npm@11
+
       - run: npm ci
 
       - run: npm audit --audit-level=high
