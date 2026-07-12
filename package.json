@@ -44,7 +44,11 @@
     "node-html-parser": "^9.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "tailwindcss": "^4.3.0"
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "tailwindcss": "^4.3.0",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
@@ -65,5 +69,10 @@
     "typescript-eslint": "^8.63.0",
     "vi": "^1.0.0",
     "vitest": "^4.1.10"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "esbuild@0.25.0": true,
+    "sharp@0.34.5": true
   }
 }
