@@ -1,5 +1,4 @@
 name: CodeQL
-
 on:
   push:
     branches: [main]
@@ -7,10 +6,8 @@ on:
     branches: [main]
   schedule:
     - cron: '0 6 * * 1'
-
 permissions:
   contents: read
-
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -22,11 +19,8 @@ jobs:
         language: [javascript-typescript]
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-
-      - uses: github/codeql-action/init@5c8a8a642e79153f5d047b10ec1cba1d1cc65699 # v3.35.1
+      - uses: github/codeql-action/init@99df26d4f13ea111d4ec1a7dddef6063f76b97e9 # v4.37.0
         with:
           languages: ${{ matrix.language }}
-
-      - uses: github/codeql-action/autobuild@5c8a8a642e79153f5d047b10ec1cba1d1cc65699 # v3.35.1
-
-      - uses: github/codeql-action/analyze@5c8a8a642e79153f5d047b10ec1cba1d1cc65699 # v3.35.1
+      - uses: github/codeql-action/autobuild@99df26d4f13ea111d4ec1a7dddef6063f76b97e9 # v4.37.0
+      - uses: github/codeql-action/analyze@99df26d4f13ea111d4ec1a7dddef6063f76b97e9 # v4.37.0
