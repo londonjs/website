@@ -20,7 +20,7 @@ jobs:
     if: github.repository == 'londonjs/website'
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install, build, and upload your site
         uses: withastro/action@e84f40bd8d2caa9e768ec82ad30dd81f0b280853 # v6.1.2
