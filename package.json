@@ -76,6 +76,8 @@
     "sharp@0.34.5": true
   },
   "overrides": {
-    "js-yaml": "^5.2.2"
+    "markdownlint-cli2": {
+      "js-yaml": "^5.2.2"
+    }
   }
 }
