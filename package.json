@@ -74,5 +74,8 @@
     "esbuild@0.28.1": true,
     "esbuild@0.25.0": true,
     "sharp@0.34.5": true
+  },
+  "overrides": {
+    "js-yaml": "^5.2.2"
   }
 }
