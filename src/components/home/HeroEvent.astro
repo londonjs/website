@@ -18,7 +18,7 @@ const { meetup } = Astro.props;
   <Card class="mb-8">
     <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center justify-center">
       <h1 class="text-4xl sm:text-5xl font-black text-center sm:text-left">
-        Join{" "}
+        Join{' '}
         <span class="text-[#333333]">{meetup.data.title}!</span>
       </h1>
       <Button href={meetup.data.meetupUrl} external class="group whitespace-nowrap">
