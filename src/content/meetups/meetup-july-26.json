@@ -1,0 +1,64 @@
+{
+  "title": "London.js @ incident.io",
+  "date": "2026-07-30",
+  "startTime": "18:00",
+  "endTime": "20:30",
+  "location": {
+    "venue": "Beyond The Bower",
+    "address": "Level 2, The Bower, 207 Old Street, London, EC1V 9NR",
+    "mapLink": "https://maps.app.goo.gl/D5Rvgn1q5miAXXf66"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/315611220",
+  "description": {
+    "markdown": "For those who've been a part of the London.JS community for a while will know that [incident.io](http://incident.io) are a huge part of what makes it what it is. For those who are new, you're in for a treat."
+  },
+  "filename_convention": "meetup-july-26",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Speakers to be announced very soon "
+      },
+      "title": "🤫"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "incident.io",
+      "logo": "/incidentio-1.png",
+      "url": "https://incident.io/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Lead at NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Technology at Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-albany/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
