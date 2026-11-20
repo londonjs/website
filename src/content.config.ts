@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 import { isBefore, parse, format } from 'date-fns';
 
@@ -19,15 +20,15 @@ const meetups = defineCollection({
   schema: z
     .object({
       title: z.string(),
-      date: z.string(), // Format: "YYYY-MM-DD"
-      startTime: z.string(), // Format: "HH:MM"
-      endTime: z.string(), // Format: "HH:MM"
+      date: z.string(),
+      startTime: z.string(),
+      endTime: z.string(),
       location: z.object({
         venue: z.string(),
         address: z.string(),
-        mapLink: z.string().url().optional(),
+        mapLink: z.url().optional(),
       }),
-      meetupUrl: z.string().url(),
+      meetupUrl: z.url(),
       description: z.object({
         markdown: z.string(),
       }),
@@ -46,7 +47,7 @@ const meetups = defineCollection({
           z.object({
             name: z.string(),
             logo: z.string(),
-            url: z.string().url(),
+            url: z.url(),
           })
         )
         .optional(),
@@ -54,8 +55,8 @@ const meetups = defineCollection({
         z.object({
           name: z.string(),
           role: z.string(),
-          linkedin: z.string().url(),
-          website: z.string().url().optional(),
+          linkedin: z.url(),
+          website: z.url().optional(),
         })
       ),
       refreshments: z.object({
@@ -66,7 +67,7 @@ const meetups = defineCollection({
         items: z.array(z.string()),
         markdown: z.boolean(),
       }),
-      codeOfConductUrl: z.string().url(),
+      codeOfConductUrl: z.url(),
     })
     .transform((data) => {
       const dateObj = new Date(data.date);
