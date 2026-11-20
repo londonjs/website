@@ -28,14 +28,12 @@ const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${c
 const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 ---
 
-{
-  href ? (
-    <a href={href} class={classes} {...externalProps}>
-      <slot />
-    </a>
-  ) : (
-    <button class={classes}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a href={href} class={classes} {...externalProps}>
+    <slot />
+  </a>
+) : (
+  <button class={classes}>
+    <slot />
+  </button>
+)}

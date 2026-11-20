@@ -38,9 +38,7 @@ const organizers = [
   >
     <div class="grid md:grid-cols-2 gap-8 items-start">
       <section class="min-w-0 w-full">
-        <h1
-          class="text-[1.8rem] sm:text-[2.3rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.3rem] font-black leading-tight text-center"
-        >
+        <h1 class="text-[1.8rem] sm:text-[2.3rem] md:text-[1.5rem] lg:text-[1.9rem] xl:text-[2.3rem] font-black leading-tight text-center">
           What is London.js? 🤔
         </h1>
 
@@ -61,7 +59,10 @@ const organizers = [
           <p>Come say hi, grab a snack, and let's talk or code! 🚀✨</p>
         </div>
         <div class="mt-8 flex gap-4 justify-center">
-          <Button href="/events" variant="primary"> View Events </Button>
+          <Button href="/events" variant="primary">
+            {' '}
+            View Events{' '}
+          </Button>
           <Button variant="secondary" href="https://www.meetup.com/london-js" external>
             Join Us
           </Button>
@@ -77,7 +78,9 @@ const organizers = [
         >
           <h2 class="text-2xl font-bold mb-6 text-center">Meet the Organisers</h2>
           <div class="space-y-6">
-            {organizers.map((organizer) => <OrganizerCard organizer={organizer} />)}
+            {organizers.map((organizer) => (
+              <OrganizerCard organizer={organizer} />
+            ))}
           </div>
         </Card>
       </section>
