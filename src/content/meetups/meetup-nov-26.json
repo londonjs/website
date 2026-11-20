@@ -1,0 +1,86 @@
+{
+  "title": "London.js @ Slack",
+  "date": "2026-11-23",
+  "startTime": "18:30",
+  "endTime": "20:30",
+  "location": {
+    "venue": "Slack",
+    "address": "110 Bishopsgate, London, EC2N 4AY",
+    "mapLink": "https://share.google/MjAFqsjBmrqZ1fC5l"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/317366197/",
+  "description": {
+    "markdown": "Our final and potentially biggest event of 2026 is here, hosted and sponsored by none other than Slack."
+  },
+  "filename_convention": "meetup-nov-26",
+  "talks": [
+    {
+      "speaker": {
+        "name": "Tom Kearsley",
+        "role": "Product Engineer at Omnea"
+      },
+      "title": "When Your API's Newest User Is an LLM"
+    },
+    {
+      "speaker": {
+        "name": "Daryl Cecile",
+        "role": "Software Engineer at GitHub"
+      },
+      "title": "Beyond the Reply: Building an AI Support Teammate"
+    },
+    {
+      "speaker": {
+        "name": "Ryan Cormack",
+        "role": "AI Engineer"
+      },
+      "title": "Building Open Source Agents using Open Protocols"
+    },
+    {
+      "speaker": {
+        "name": "Jason Pope",
+        "role": "Senior Manager, Solution Engineering at Slack"
+      },
+      "title": "Where Humans and Agents Work Together"
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "Slack",
+      "logo": "/Slack-logo-trimmed.png",
+      "url": "https://slack.com/intl/en-gb/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "James McLeod",
+      "role": "Open Source Lead at NatWest Group",
+      "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
+    },
+    {
+      "name": "Jordan Potts",
+      "role": "Head of Technology at Albany Growth",
+      "linkedin": "https://www.linkedin.com/in/jordan-potts-albany/"
+    },
+    {
+      "name": "Will Laing",
+      "role": "Co-Founder, Plan:it",
+      "linkedin": "https://www.linkedin.com/in/willhlaing/"
+    }
+  ],
+  "refreshments": {
+    "description": "A variety of food & drink will be served. We will endeavour to cater for allergies & dietary requirements. This won't just be pizza & beer either...",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": [
+      "A desire to explore JavaScript from different points of view is absolutely recommended",
+      "Feel free to bring your JS projects along",
+      "All engineering levels are welcome",
+      "Please RSVP to secure a place",
+      "Please ask plus 1's to sign up to the group & RSVP",
+      "Spaces are limited so techies get priority"
+    ],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
+}
