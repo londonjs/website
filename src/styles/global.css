@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+@theme {
+  --color-brand-yellow: #ffd93d;
+  --color-brand-ink: #161514;
+  --color-brand-ink-soft: #3a3631;
+  --color-brand-ink-mute: #7a726a;
+  --color-brand-paper: #ffffff;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
   display: none;
@@ -17,7 +25,7 @@ body {
 }
 
 .countdown-item {
-  @apply bg-[#f0db4e] p-4 rounded-xl border-2 border-[#333333];
+  @apply bg-brand-yellow p-4 rounded-xl border-2 border-[#333333];
 }
 
 button:hover,
