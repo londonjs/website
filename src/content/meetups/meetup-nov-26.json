@@ -17,14 +17,14 @@
     {
       "speaker": {
         "name": "Tom Kearsley",
-        "role": "Product Engineer at Omnea"
+        "role": "Product Engineer, Omnea"
       },
       "title": "Your API's newest user is an LLM"
     },
     {
       "speaker": {
         "name": "Daryl Cecile",
-        "role": "Software Engineer at GitHub"
+        "role": "Software Engineer, GitHub"
       },
       "title": "Beyond the Reply: Building an AI Support Teammate"
     },
@@ -53,12 +53,12 @@
   "organizers": [
     {
       "name": "James McLeod",
-      "role": "Open Source Lead at NatWest Group",
+      "role": "Open Source Lead, NatWest Group",
       "linkedin": "https://www.linkedin.com/in/jamesmcleod/"
     },
     {
       "name": "Jordan Potts",
-      "role": "Head of Technology at Albany Growth",
+      "role": "Head of Technology, Albany",
       "linkedin": "https://www.linkedin.com/in/jordan-potts-albany/"
     },
     {
