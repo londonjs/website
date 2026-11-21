@@ -4,7 +4,7 @@
   "startTime": "18:30",
   "endTime": "20:30",
   "location": {
-    "venue": "Slack",
+    "venue": "Salesforce Tower",
     "address": "110 Bishopsgate, London, EC2N 4AY",
     "mapLink": "https://share.google/MjAFqsjBmrqZ1fC5l"
   },
@@ -19,7 +19,7 @@
         "name": "Tom Kearsley",
         "role": "Product Engineer at Omnea"
       },
-      "title": "When Your API's Newest User Is an LLM"
+      "title": "Your API's newest user is an LLM"
     },
     {
       "speaker": {
@@ -37,10 +37,10 @@
     },
     {
       "speaker": {
-        "name": "Jason Pope",
-        "role": "Senior Manager, Solution Engineering at Slack"
+        "name": "Jason Pope and Megan Maguire",
+        "role": "Slack"
       },
-      "title": "Where Humans and Agents Work Together"
+      "title": "Slack for Communities & Engineering"
     }
   ],
   "sponsors": [
