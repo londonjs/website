@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+
+- **sync-fork.yml workflow** - Work now happens on upstream feature branches, so fork sync is no longer needed
+- **src/london-js-organisers.jpeg** - Unused image; organiser headshots live in `public/organisers/`
+
 ## [0.1.0] - 2026-03-27
 
 ### Added - Security & CI/CD Hardening

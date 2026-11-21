@@ -703,6 +703,8 @@ creating the file. If the upstream has multiple maintainers, add them all.
 
 ### 3.5 Create `sync-fork.yml`
 
+> **Superseded (2026-11):** workflow removed. Changes are now authored on upstream feature branches, not a fork.
+
 **Why**: Keeps forks in sync with upstream without manual intervention.
 
 **Action**: Create `.github/workflows/sync-fork.yml`:
