@@ -25,7 +25,7 @@ body {
 }
 
 .countdown-item {
-  @apply bg-brand-yellow p-4 rounded-xl border-2 border-[#333333];
+  @apply bg-brand-yellow p-4 rounded-xl border-2 border-brand-ink;
 }
 
 button:hover,
