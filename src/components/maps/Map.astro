@@ -23,6 +23,7 @@ const mapLink = hasCoordinates ? buildOsmLink(lat, lon) : buildOsmSearchLink(loc
       <>
         <div class="absolute inset-0 bg-gray-100 animate-pulse" id="map-loading"></div>
         <iframe
+          title={`Map showing ${location}`}
           width="100%"
           height="100%"
           style="border:0"
