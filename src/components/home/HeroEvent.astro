@@ -29,7 +29,11 @@ const { meetup } = Astro.props;
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
     <EventCard meetup={meetup} />
-    <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
+    <Map
+      location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
+      lat={meetup.data.location.coordinates?.lat}
+      lon={meetup.data.location.coordinates?.lon}
+    />
   </div>
 
   <ReactCountdown client:load targetDate={meetup.data.date} endTime={meetup.data.endTime} />

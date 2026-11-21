@@ -6,7 +6,8 @@
   "location": {
     "venue": "Salesforce Tower",
     "address": "110 Bishopsgate, London, EC2N 4AY",
-    "mapLink": "https://share.google/MjAFqsjBmrqZ1fC5l"
+    "mapLink": "https://share.google/MjAFqsjBmrqZ1fC5l",
+    "coordinates": { "lat": 51.51611, "lon": -0.08083 }
   },
   "meetupUrl": "https://www.meetup.com/london-js/events/317366197/",
   "description": {
