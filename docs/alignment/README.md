@@ -10,7 +10,7 @@ across unchanged. Live event drift is reproduced first below, since it
 affects the event on 23 November 2026. Seven quick wins follow, then eight
 follow-on outlines, then one conflict found between the three reports.
 
-## Live event drift
+## Live event drift (at the time of writing, 21 November 2026)
 
 The event data report records drift between the website's event data and
 the slides repository for the event on 23 November 2026: the Talk 1 and

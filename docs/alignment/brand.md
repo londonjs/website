@@ -122,7 +122,7 @@ loads fonts at line 8:
 Note this link does not include Fraunces, even though `tokens.css`
 declares `font-family: "Fraunces", Georgia, serif"` for title reveals.
 That is a sibling-repository observation, out of scope for this
-website-focused Story.
+website-focused analysis.
 
 ### 1.7 Sibling: assets/
 
@@ -250,4 +250,4 @@ layout or spacing utility needs to change for this.
    `tokens.css` (`oklch(0.45 0.14 70)`) and `slides.jsx` (`#7C4A00`).
    **FOLLOW-ON**: this is sibling-repository housekeeping, out of scope
    for a website pull request, and is recorded here only because the
-   Story asked for the discrepancy to be captured.
+   analysis brief asked for the discrepancy to be captured.
