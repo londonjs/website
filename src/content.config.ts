@@ -27,6 +27,7 @@ const meetups = defineCollection({
         venue: z.string(),
         address: z.string(),
         mapLink: z.url().optional(),
+        coordinates: z.object({ lat: z.number(), lon: z.number() }).optional(),
       }),
       meetupUrl: z.url(),
       description: z.object({

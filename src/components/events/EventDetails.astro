@@ -70,7 +70,11 @@ const refreshmentsHtml = meetup.data.refreshments.markdown
     )}
 
     <!-- Location -->
-    <Map location={`${meetup.data.location.venue}, ${meetup.data.location.address}`} />
+    <Map
+      location={`${meetup.data.location.venue}, ${meetup.data.location.address}`}
+      lat={meetup.data.location.coordinates?.lat}
+      lon={meetup.data.location.coordinates?.lon}
+    />
 
     <!-- Sponsors -->
     {meetup.data.sponsors && (
