@@ -19,3 +19,4 @@
 - [ ] My changes follow the existing code style
 - [ ] I have run `npm test` and all tests pass
 - [ ] I have installed pre-commit hooks (`npm install` activates them)
+- [ ] If I used an AI tool, I've named it and what it did in the description, and I've reviewed and tested every change myself
