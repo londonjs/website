@@ -105,6 +105,18 @@ cp src/templates/meetup.json src/content/meetups/meetup-jan-26.json
 - [ ] Code follows existing style (enforced by pre-commit hooks)
 - [ ] Commit messages are clear and descriptive
 
+## AI-Assisted Contributions
+
+AI coding tools and agents are welcome here. If you use one:
+
+- **Say so in your PR description.** Name the tool and what it did, for example "drafted with an AI agent, reviewed and tested by me".
+- **You are the author.** Read every line, run `npm test` and `npm run build` yourself, and be ready to explain and change the code in review.
+- **Keep it small.** One issue per PR. Large generated changes are hard to review and may be closed.
+- **Keep it clean.** Never paste secrets, personal data or code you don't have the right to share into an AI tool or a PR.
+- **Agents follow the same rules.** An agent working for you must follow this guide, the PR template and [AGENTS.md](AGENTS.md).
+
+Maintainers may ask for changes, or close a PR that looks generated without review.
+
 ## Code Review
 
 All PRs require review before merging. Maintainers will review your changes and may request modifications.
