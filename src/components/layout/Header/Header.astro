@@ -56,14 +56,28 @@ try {
     const closeButton = document.getElementById('close-menu');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    menuButton?.addEventListener('click', () => {
-      mobileMenu?.classList.remove('translate-x-full');
-      menuButton?.setAttribute('aria-expanded', 'true');
-    });
+    if (!menuButton || !closeButton || !mobileMenu) return;
 
-    closeButton?.addEventListener('click', () => {
-      mobileMenu?.classList.add('translate-x-full');
-      menuButton?.setAttribute('aria-expanded', 'false');
+    const isOpen = () => menuButton.getAttribute('aria-expanded') === 'true';
+
+    const openMenu = () => {
+      mobileMenu.inert = false;
+      mobileMenu.classList.remove('translate-x-full');
+      menuButton.setAttribute('aria-expanded', 'true');
+      closeButton.focus();
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.inert = true;
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.focus();
+    };
+
+    menuButton.addEventListener('click', openMenu);
+    closeButton.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) closeMenu();
     });
   }
 
