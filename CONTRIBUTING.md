@@ -74,18 +74,52 @@ cp src/templates/meetup.json src/content/meetups/meetup-jan-26.json
 
 ```json
 {
-  "title": "Meetup Title",
-  "date": "2026-01-15T18:30:00+00:00",
-  "location": "Venue Name, Address",
-  "speakers": [
+  "title": "London.js @ Example Corp",
+  "date": "2026-01-28",
+  "startTime": "18:30",
+  "endTime": "20:30",
+  "location": {
+    "venue": "Example Corp",
+    "address": "1 Example Street, London, EC1A 1AA",
+    "mapLink": "https://maps.app.goo.gl/example"
+  },
+  "meetupUrl": "https://www.meetup.com/london-js/events/123456789/",
+  "description": {
+    "markdown": "Three talks on JavaScript in production.\n\nDoors open at 18:30."
+  },
+  "talks": [
     {
-      "name": "Speaker Name",
-      "talk": "Talk Title",
-      "bio": "Speaker bio"
+      "speaker": {
+        "name": "Jane Doe",
+        "role": "Senior Engineer at Example Corp"
+      },
+      "title": "Shipping TypeScript Without Fear"
     }
   ],
-  "sponsors": ["Sponsor Name"],
-  "url": "https://meetup.com/london-js/events/..."
+  "sponsors": [
+    {
+      "name": "Example Corp",
+      "logo": "/sponsors/example-corp.png",
+      "url": "https://www.example.com/"
+    }
+  ],
+  "organizers": [
+    {
+      "name": "John Smith",
+      "role": "Organiser, London.js",
+      "linkedin": "https://www.linkedin.com/in/example/",
+      "website": "https://www.example.com/"
+    }
+  ],
+  "refreshments": {
+    "description": "Food and drinks will be provided. Let us know about any **dietary requirements**.",
+    "markdown": true
+  },
+  "thingsToNote": {
+    "items": ["Bring photo ID for building security.", "The talks will be recorded."],
+    "markdown": false
+  },
+  "codeOfConductUrl": "http://confcodeofconduct.com"
 }
 ```
 
