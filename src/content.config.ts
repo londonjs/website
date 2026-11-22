@@ -1,19 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
-import { isBefore, parse, format } from 'date-fns';
-
-const generateSlug = (dateStr: string, title: string): string => {
-  const date = new Date(dateStr);
-  const formattedDate = format(date, 'yyyy-MM-dd');
-  const titleSlug = title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/^-+|-+$/g, '');
-
-  return `${formattedDate}-${titleSlug}`;
-};
+import { isBefore, parse } from 'date-fns';
+import { generateSlug } from './utils/slug';
 
 const meetups = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/meetups' }),
