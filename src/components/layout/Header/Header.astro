@@ -39,6 +39,8 @@ try {
           id="menu-button"
           class="md:hidden p-2 hover:text-brand-yellow transition-colors"
           aria-label="Toggle menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
         >
           <Menu />
         </button>
@@ -56,10 +58,12 @@ try {
 
     menuButton?.addEventListener('click', () => {
       mobileMenu?.classList.remove('translate-x-full');
+      menuButton?.setAttribute('aria-expanded', 'true');
     });
 
     closeButton?.addEventListener('click', () => {
       mobileMenu?.classList.add('translate-x-full');
+      menuButton?.setAttribute('aria-expanded', 'false');
     });
   }
 
