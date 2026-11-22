@@ -45,7 +45,7 @@ const { meetup } = Astro.props;
 
     {meetup.data.talks && (
       <div class="space-y-2">
-        <h4 class="font-medium">Speakers:</h4>
+        <h2 class="font-medium">Speakers:</h2>
         <ul class="space-y-1">
           {meetup.data.talks.map((talk) => (
             <li class="text-gray-600">
