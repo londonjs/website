@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Container from '../components/common/Container.astro';
+import Card from '../components/common/Card.astro';
+import Button from '../components/common/Button.astro';
+---
+
+<Base title="Page not found | London.js">
+  <Container>
+    <Card class="mb-8">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl font-black mb-6">Page not found</h1>
+        <p class="text-xl mb-8">
+          Sorry, we could not find that page. It may have moved, or the link may be wrong.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/">Back to the homepage</Button>
+          <Button variant="secondary" href="/events">
+            View Past Events
+          </Button>
+        </div>
+      </div>
+    </Card>
+  </Container>
+</Base>
